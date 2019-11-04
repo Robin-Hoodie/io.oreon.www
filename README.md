@@ -95,3 +95,23 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+
+## Linting
+
+We're using ESLint for linting our files
+
+ESLint will use the recommend lint from (in this order):
+  - Eslint
+  - React
+  - Typescript
+  - Prettier
+
+Latter rules override former rules
+Furthermore we have a `.prettierrc` file in our root directory
+Gatsby will consistently use our eslint rules for checking this
+
+### Pre-commit check
+
+We're running a pre-commit check on our usage of types with the `type-check` npm command as well as linting our files with the `lint` npm command.
+The `lint` command sets the `max-warnings` to 0, as otherwise ESLint will only exit with a 1 exit code if there are errors, not for warnings.

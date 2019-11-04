@@ -1,0 +1,17 @@
+parser: "@typescript-eslint/parser"
+extends:
+  - "eslint:recommended" # Included with ESLint
+  - "plugin:react/recommended"  # https://www.npmjs.com/package/eslint-plugin-react react specific linting rules
+  - "plugin:@typescript-eslint/recommended" # https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin typescript specific linting rules
+parserOptions:
+  ecmaVersion: 2019
+  sourceType: "module"
+  ecmaFeatures:
+    jsx: true
+settings:
+  react:
+    version: detect
+rules:
+  quotes:
+    - error
+    - double

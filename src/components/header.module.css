@@ -1,0 +1,43 @@
+.header {
+  margin-bottom: 1.2rem;
+  padding: 16px;
+}
+
+.brand {
+  float: left;
+  text-decoration: none;
+  color: var(--accent-color);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.link-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header-link {
+  text-decoration: none;
+  margin-right: 2rem;
+  color: var(--accent-color);
+  padding: 8px 16px;
+  font-weight: bold;
+  transition: color .5s;
+}
+
+.header-link:hover {
+  color: var(--primary-color);
+}
+
+.call-to-action {
+  composes: header-link;
+  border: 2px solid var(--accent-color);
+  border-radius: 16px;
+  transition: color .5s, background-color .5s;
+}
+
+.call-to-action:hover {
+  color: var(--secondary-color);
+  background-color: var(--accent-color);
+}
+
