@@ -1,12 +1,26 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./fonts/ProximaNova-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('fonts/ProximaNova-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 html {
-  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-family: 'Proxima Nova', 'Verdana', 'monospace';
+  font-weight: 400;
 }
 
 body {
   margin: 0;
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
-  font-size: 18px;
 }

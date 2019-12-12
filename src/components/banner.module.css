@@ -1,0 +1,19 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1920px;
+  height: calc(100vh - 72px); /* Navigation bar height is 72px */
+  color: white;
+  background-image: url("../images/banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  letter-spacing: .5rem;
+  text-shadow: 2px 2px 7px white;
+}
+
+.banner > span {
+  font-size: 5rem;
+  font-weight: bold;
+}

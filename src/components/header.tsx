@@ -10,12 +10,12 @@ interface HeaderProps {
 
 const Header = ({ siteTitle }: HeaderProps): JSX.Element => (
   <header className={style.header}>
-      <Link
-        to="/"
-        className={style.brand}>
-        {siteTitle}
-      </Link>
-      <div className={style.linkContainer}>
+      <nav className={style.navigationBar}>
+        <Link
+          to="/"
+          className={style.brand}>
+          {siteTitle}
+        </Link>
         <Link
           to="/portfolio/"
           className={style.headerLink}>
@@ -29,9 +29,9 @@ const Header = ({ siteTitle }: HeaderProps): JSX.Element => (
         <Link
           to="/contact/"
           className={style.callToAction}>
-          Work with me
+          Work with me!
         </Link>
-      </div>
+      </nav>
   </header>
 );
 
