@@ -1,0 +1,26 @@
+@import "../../variables"
+
+.mobile-menu
+  position: fixed
+  top: 0
+  left: 0
+  z-index: $z-index-mobile-menu
+  opacity: 0
+  transform: translateX(200%)
+  width: 50%
+  height: 100vh
+  background-color: $text-color
+  color: $primary-color
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  transition-property: transform, opacity
+  transition-duration: 500ms
+  padding: .5rem 0
+
+  &.opened
+    transform: translateX(100%)
+    opacity: 1
+
+

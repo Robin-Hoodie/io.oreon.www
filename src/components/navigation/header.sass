@@ -1,0 +1,11 @@
+@import "../../variables"
+@import "../../mixins"
+
+.header__navigation-bar
+  display: flex
+  justify-content: space-between
+  padding: 1rem
+  background-color: $text-color
+  @include desktop-media-query()
+    justify-content: center
+

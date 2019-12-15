@@ -15,3 +15,5 @@ rules:
   quotes:
     - error
     - double
+globals:
+  console: readonly

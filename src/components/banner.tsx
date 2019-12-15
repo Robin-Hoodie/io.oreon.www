@@ -1,9 +1,9 @@
 import React from "react";
 
-import style from "./banner.module.css";
+import "./banner.sass";
 
 const Banner = (): JSX.Element => (
-    <div className={style.banner}>
+    <div className="banner">
       <span>FULLSTACK SOFTWARE ENGINEER</span>
     </div>
 );

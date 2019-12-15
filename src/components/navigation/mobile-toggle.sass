@@ -1,0 +1,23 @@
+@import "../../variables"
+@import "../../mixins"
+
+.mobile-toggle
+  width: 3rem
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  &:hover,
+  &:active
+    cursor: pointer
+
+  &__bar
+    height: .3rem
+    background-color: $primary-color
+    margin-bottom: .5rem
+
+    &:last-child
+      margin-bottom: 0
+
+  @include desktop-media-query()
+    display: none

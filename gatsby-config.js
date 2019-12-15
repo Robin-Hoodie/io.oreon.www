@@ -1,3 +1,5 @@
+/* global module, __dirname */
+/* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
   siteMetadata: {
     title: "Oreon",
@@ -15,6 +17,7 @@ module.exports = {
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
