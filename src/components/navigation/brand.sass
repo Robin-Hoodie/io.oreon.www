@@ -1,4 +1,5 @@
 @import "../../variables"
+@import "../../mixins"
 
 .brand
   color: $primary-color
@@ -9,3 +10,6 @@
     transform: uppercase
     decoration: none
   letter-spacing: 2px
+
+  @include desktop-media-query()
+    margin-right: auto

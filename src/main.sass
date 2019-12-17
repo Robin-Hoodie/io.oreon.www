@@ -1,3 +1,5 @@
+@import "./variables"
+
 @font-face
   font-family: 'Proxima Nova'
   src: url('./fonts/ProximaNova-Regular.otf') format('truetype')
@@ -19,3 +21,16 @@ html
 
 body
   margin: 0
+
+.default-button
+  background-color: transparent
+  font-weight: bold
+  text-transform: uppercase
+  border: $default-border
+  font:
+    size: inherit
+    family: inherit
+
+input, textarea
+  font-family: 'sans-serif'
+  font-size: 100%

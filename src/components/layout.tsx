@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import Header from "./navigation/header";
 import MobileMenu from "./navigation/mobile-menu";
 import Backdrop from "./backdrop";
+import ContactModal from "./contact/contact-modal";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const [mobileMenuOpened, setMobileMenuOpened] = useState(false);
+  const [contactModalOpened, setContactModelOpened] = useState(false);
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -33,13 +35,22 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
       <Header
-        siteTitle={data.site.siteMetadata.title}
-        onMobileToggle={(): void => setMobileMenuOpened(true)} />
+        onContactButtonClicked={(): void => setContactModelOpened(true)}
+        onMobileMenuButtonClicked={(): void => setMobileMenuOpened(true)}
+        siteTitle={data.site.siteMetadata.title} />
       <MobileMenu
-        opened={mobileMenuOpened} />
+        opened={mobileMenuOpened}
+        onContactButtonClicked={(): void => {
+          setMobileMenuOpened(false);
+          setContactModelOpened(true);
+        }} />
+      <ContactModal opened={contactModalOpened} />
       <Backdrop
-        show={mobileMenuOpened}
-        onClick={(): void => setMobileMenuOpened(false)} />
+        show={mobileMenuOpened || contactModalOpened}
+        onClick={(): void => {
+          setMobileMenuOpened(false);
+          setContactModelOpened(false);
+        }} />
       <section>
         {children}
       </section>

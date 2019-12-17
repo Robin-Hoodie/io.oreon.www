@@ -1,0 +1,77 @@
+@import "../../mixins"
+@import "../../variables"
+
+.contact-modal
+  visibility: hidden
+  display: block
+  position: fixed
+  top: 50%
+  left: 50%
+  width: 90%
+  border: $default-border
+  opacity: 0
+  z-index: $z-index-contact-menu
+  padding: 2rem 2.5rem 2.5rem 2.5rem
+  transition: transform 500ms, visibility 500ms, opacity 500ms
+  transform: translate(-50%, -100%)
+
+  @include desktop-media-query()
+    width: 60%
+
+  &.opened
+    opacity: 1
+    visibility: visible
+    transform: translate(-50%, -50%)
+
+  > h1
+    letter-spacing: 2px
+    text-align: center
+    margin: 0
+
+
+.contact-modal__form
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+
+  > div
+    width: 80%
+    margin: 1rem 0
+
+  label
+    display: block
+    font:
+      size: 80%
+      weight: bold
+    margin-bottom: .5rem
+
+  input
+    width: 100%
+    outline: none
+    border: none
+    border-bottom: 1px solid $primary-color
+
+    &:focus
+      //TODO: Make focus state more obvious
+      border-bottom-width: 2px
+
+
+.contact-modal__form__message
+  > textarea
+    width: 100%
+    padding: .5rem
+    resize: vertical
+
+    &:focus
+      outline-color: black
+
+.contact-modal__form__submit
+  padding: 1rem 2rem
+  transition: $button-transition
+  cursor: pointer
+
+  &:hover,
+  &:active
+    background-color: $primary-color
+    color: $text-color

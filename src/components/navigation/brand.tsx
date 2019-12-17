@@ -6,21 +6,18 @@ import "./brand.sass";
 
 interface BrandProps {
   siteTitle: string;
-  style?: object;
 }
 
-const Brand = ({ siteTitle, style }: BrandProps): JSX.Element => (
+const Brand = ({ siteTitle }: BrandProps): JSX.Element => (
   <Link
     to="/"
-    className="brand"
-    style={style}>
+    className="brand">
     {siteTitle}
   </Link>
 );
 
 Brand.propTypes = {
-  siteTitle: PropTypes.string.isRequired,
-  style: PropTypes.object
+  siteTitle: PropTypes.string.isRequired
 };
 
 export default Brand;

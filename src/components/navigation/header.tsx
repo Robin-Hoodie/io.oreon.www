@@ -3,21 +3,20 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import "./header.sass";
-import "./link.sass";
-import MobileToggle from "./mobile-toggle";
+import "./menu-item.sass";
+import MobileMenuButton from "./mobile-menu-button";
 import Brand from "./brand";
 
 interface HeaderProps {
+  onContactButtonClicked: () => void;
+  onMobileMenuButtonClicked: () => void;
   siteTitle: string;
-  onMobileToggle: () => void;
 }
 
-const Header = ({ siteTitle, onMobileToggle }: HeaderProps): JSX.Element => (
+const Header = ({ onContactButtonClicked, onMobileMenuButtonClicked, siteTitle }: HeaderProps): JSX.Element => (
   <header>
     <nav className="header__navigation-bar">
-      <Brand
-        siteTitle={siteTitle}
-        style={{ marginRight: "auto" }} />
+      <Brand siteTitle={siteTitle} />
       <Link
         to="/portfolio/"
         className="header__link">
@@ -28,18 +27,22 @@ const Header = ({ siteTitle, onMobileToggle }: HeaderProps): JSX.Element => (
         className="header__link">
         Blog
       </Link>
-      <Link
-        to="/contact/"
-        className="header__link--cta">
+      <button
+        onClick={onContactButtonClicked}
+        type="button"
+        className="default-button header__cta">
         Work with me!
-      </Link>
-      <MobileToggle onClick={onMobileToggle} />
+      </button>
+      <MobileMenuButton
+        onClick={onMobileMenuButtonClicked} />
     </nav>
   </header>
 );
 
 Header.propTypes = {
-  siteTitle: PropTypes.string.isRequired,
+  onContactButtonClicked: PropTypes.func.isRequired,
+  onMobileMenuButtonClicked: PropTypes.func.isRequired,
+  siteTitle: PropTypes.string.isRequired
 };
 
 export default Header;
