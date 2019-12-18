@@ -10,7 +10,8 @@ import Banner from "../components/banner";
 //TODO: Mobile items need feedback on clicking them
 //TODO: Use different visual cue for hvoering over links than buttons do
 //TODO: Contact modal should be in middle of page vertically
-//TODO: Update icon to something I can reuse
+//TODO: Get logo to use as icon
+//TODO: Slide mobile sidebar down instead of sideways? + animating mobile toggle icon
 const IndexPage = (): JSX.Element => (
   <>
     <Layout>
