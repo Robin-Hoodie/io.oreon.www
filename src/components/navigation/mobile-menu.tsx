@@ -16,26 +16,24 @@ const MobileMenu = ({ opened = false, onContactButtonClicked }: MobileMenuProps)
     classNames += " opened";
   }
   return (
-    <aside>
-      <nav className={classNames}>
-        <Link
-          to="/portfolio/"
-          className="mobile-menu__link">
-          Portfolio
-        </Link>
-        <Link
-          to="/blog/"
-          className="mobile-menu__link">
-          Blog
-        </Link>
-        <button
-          type="button"
-          className="default-button mobile-menu__cta"
-          onClick={onContactButtonClicked}>
-          Work with me!
-        </button>
-      </nav>
-    </aside>
+    <nav className={classNames}>
+      <Link
+        to="/portfolio/"
+        className="mobile-menu__link">
+        Portfolio
+      </Link>
+      <Link
+        to="/blog/"
+        className="mobile-menu__link">
+        Blog
+      </Link>
+      <button
+        type="button"
+        className="default-button mobile-menu__cta"
+        onClick={onContactButtonClicked}>
+        Work with me!
+      </button>
+    </nav>
   );
 };
 

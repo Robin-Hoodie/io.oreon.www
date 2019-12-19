@@ -6,20 +6,18 @@
   justify-content: center
   align-items: center
   position: fixed
-  top: 0
-  right: 0
+  transform: translateY(calc(-#{$header-height} - 100%))
   z-index: $z-index-mobile-menu
+  border-top: $default-border
   opacity: 0
-  transform: translateX(100%)
-  width: 50%
-  height: 100%
+  width: 100%
   background-color: $text-color
   transition-property: transform, opacity
   transition-duration: 500ms
-  padding: .5rem 0
+  padding: 1rem 0
 
   &.opened
-    transform: translateX(0)
+    transform: translateY(0)
     opacity: 1
 
 
