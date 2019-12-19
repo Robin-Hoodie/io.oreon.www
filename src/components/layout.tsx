@@ -7,12 +7,55 @@
 
 import { graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 
 import Header from "./navigation/header";
 import MobileMenu from "./navigation/mobile-menu";
 import Backdrop from "./backdrop";
 import ContactModal from "./contact/contact-modal";
+
+export type LayoutAction =
+  { type: "CLOSE_MODAL" }
+  | { type: "OPEN_MODAL" }
+  | { type: "CLOSE_MOBILE_MENU" }
+  | { type: "TOGGLE_MOBILE_MENU" };
+
+interface LayoutState {
+  mobileMenuOpened: boolean;
+  contactModalOpened: boolean;
+}
+
+const initialState: LayoutState = {
+  mobileMenuOpened: false,
+  contactModalOpened: false
+};
+
+const reducer = (state: LayoutState, action: LayoutAction): LayoutState => {
+  switch (action.type) {
+    case "CLOSE_MODAL":
+      return {
+        ...state,
+        contactModalOpened: false
+      };
+    case "OPEN_MODAL":
+      return {
+        ...state,
+        contactModalOpened: true
+      };
+    case "CLOSE_MOBILE_MENU":
+      return {
+        ...state,
+        mobileMenuOpened: false
+      };
+    case "TOGGLE_MOBILE_MENU":
+      return {
+        ...state,
+        mobileMenuOpened: !state.mobileMenuOpened
+      };
+    default:
+      return state;
+  }
+};
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,8 +63,7 @@ interface LayoutProps {
 
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
-  const [mobileMenuOpened, setMobileMenuOpened] = useState(false);
-  const [contactModalOpened, setContactModelOpened] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -35,22 +77,16 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
       <Backdrop
-        show={mobileMenuOpened || contactModalOpened}
-        onClick={(): void => {
-          setMobileMenuOpened(false);
-          setContactModelOpened(false);
-        }} />
-      <ContactModal opened={contactModalOpened} />
+        show={state.mobileMenuOpened || state.contactModalOpened}
+        layoutDispatch={dispatch} />
+      <ContactModal opened={state.contactModalOpened} />
       <Header
-        onContactButtonClicked={(): void => setContactModelOpened(true)}
-        onMobileMenuButtonClicked={(): void => setMobileMenuOpened(true)}
+        layoutDispatch={dispatch}
         siteTitle={data.site.siteMetadata.title} />
       <MobileMenu
-        opened={mobileMenuOpened}
-        onContactButtonClicked={(): void => {
-          setMobileMenuOpened(false);
-          setContactModelOpened(true);
-        }} />
+        opened={state.mobileMenuOpened}
+        layoutDispatch={dispatch}
+      />
       <main>
         {children}
       </main>

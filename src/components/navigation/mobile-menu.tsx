@@ -1,16 +1,17 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import PropTypes from "prop-types";
 
 import "./mobile-menu.sass";
 import "./menu-item.sass";
 import { Link } from "gatsby";
+import { LayoutAction } from "../layout";
 
 interface MobileMenuProps {
+  layoutDispatch: Dispatch<LayoutAction>;
   opened: boolean;
-  onContactButtonClicked: () => void;
 }
 
-const MobileMenu = ({ opened = false, onContactButtonClicked }: MobileMenuProps): JSX.Element => {
+const MobileMenu = ({ layoutDispatch, opened = false }: MobileMenuProps): JSX.Element => {
   let classNames = "mobile-menu";
   if (opened) {
     classNames += " opened";
@@ -30,7 +31,10 @@ const MobileMenu = ({ opened = false, onContactButtonClicked }: MobileMenuProps)
       <button
         type="button"
         className="default-button mobile-menu__cta"
-        onClick={onContactButtonClicked}>
+        onClick={(): void => {
+          layoutDispatch({type: "OPEN_MODAL"});
+          layoutDispatch({type: "CLOSE_MOBILE_MENU"});
+        }}>
         Work with me!
       </button>
     </nav>
@@ -38,8 +42,8 @@ const MobileMenu = ({ opened = false, onContactButtonClicked }: MobileMenuProps)
 };
 
 MobileMenu.propTypes = {
+  layoutDispatch: PropTypes.func.isRequired,
   opened: PropTypes.bool.isRequired,
-  onContactButtonClicked: PropTypes.func.isRequired
 };
 
 export default MobileMenu;

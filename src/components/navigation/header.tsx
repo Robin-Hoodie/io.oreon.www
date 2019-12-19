@@ -1,19 +1,19 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Dispatch } from "react";
 
 import "./header.sass";
 import "./menu-item.sass";
 import MobileMenuButton from "./mobile-menu-button";
 import Brand from "./brand";
+import { LayoutAction } from "../layout";
 
 interface HeaderProps {
-  onContactButtonClicked: () => void;
-  onMobileMenuButtonClicked: () => void;
+  layoutDispatch: Dispatch<LayoutAction>;
   siteTitle: string;
 }
 
-const Header = ({ onContactButtonClicked, onMobileMenuButtonClicked, siteTitle }: HeaderProps): JSX.Element => (
+const Header = ({ layoutDispatch, siteTitle }: HeaderProps): JSX.Element => (
   <header className="header">
     <nav className="header__navigation-bar">
       <Brand siteTitle={siteTitle} />
@@ -28,20 +28,19 @@ const Header = ({ onContactButtonClicked, onMobileMenuButtonClicked, siteTitle }
         Blog
       </Link>
       <button
-        onClick={onContactButtonClicked}
+        onClick={(): void => layoutDispatch({ type: "OPEN_MODAL" })}
         type="button"
         className="default-button header__cta">
         Work with me!
       </button>
       <MobileMenuButton
-        onClick={onMobileMenuButtonClicked} />
+        onClick={(): void => layoutDispatch({ type: "TOGGLE_MOBILE_MENU" })} />
     </nav>
   </header>
 );
 
 Header.propTypes = {
-  onContactButtonClicked: PropTypes.func.isRequired,
-  onMobileMenuButtonClicked: PropTypes.func.isRequired,
+  layoutDispatch: PropTypes.func.isRequired,
   siteTitle: PropTypes.string.isRequired
 };
 
