@@ -8,8 +8,7 @@ interface MobileToggleProps {
 }
 
 
-const MobileMenuButton = ({ onClick }: MobileToggleProps): JSX.Element => {
-  return (
+const MobileMenuButton = ({ onClick }: MobileToggleProps): JSX.Element => (
     <div
       className="mobile-menu-button"
       onClick={onClick}>
@@ -17,8 +16,7 @@ const MobileMenuButton = ({ onClick }: MobileToggleProps): JSX.Element => {
       <div className="mobile-menu-button__bar" />
       <div className="mobile-menu-button__bar" />
     </div>
-  );
-};
+);
 
 MobileMenuButton.propTypes = {
   onClick: PropTypes.func.isRequired
