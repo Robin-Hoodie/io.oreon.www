@@ -34,6 +34,13 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
   return (
     <>
+      <Backdrop
+        show={mobileMenuOpened || contactModalOpened}
+        onClick={(): void => {
+          setMobileMenuOpened(false);
+          setContactModelOpened(false);
+        }} />
+      <ContactModal opened={contactModalOpened} />
       <Header
         onContactButtonClicked={(): void => setContactModelOpened(true)}
         onMobileMenuButtonClicked={(): void => setMobileMenuOpened(true)}
@@ -44,16 +51,9 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
           setMobileMenuOpened(false);
           setContactModelOpened(true);
         }} />
-      <ContactModal opened={contactModalOpened} />
-      <Backdrop
-        show={mobileMenuOpened || contactModalOpened}
-        onClick={(): void => {
-          setMobileMenuOpened(false);
-          setContactModelOpened(false);
-        }} />
-      <section>
+      <main>
         {children}
-      </section>
+      </main>
     </>
   );
 };

@@ -14,7 +14,7 @@ interface HeaderProps {
 }
 
 const Header = ({ onContactButtonClicked, onMobileMenuButtonClicked, siteTitle }: HeaderProps): JSX.Element => (
-  <header>
+  <header className="header">
     <nav className="header__navigation-bar">
       <Brand siteTitle={siteTitle} />
       <Link

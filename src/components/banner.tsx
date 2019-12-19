@@ -4,7 +4,7 @@ import "./banner.sass";
 
 const Banner = (): JSX.Element => (
     <div className="banner">
-      <span>FULLSTACK SOFTWARE ENGINEER</span>
+      {/*<span>FULLSTACK SOFTWARE ENGINEER</span>*/}
     </div>
 );
 
