@@ -9,6 +9,9 @@ import Banner from "../components/banner";
 //TODO: Mobile items need feedback on clicking them
 //TODO: Use different visual cue for hovering over links than buttons do
 //TODO: Get logo to use as icon
+//TODO: Use focus states for buttons and links
+//TODO: Write functions using typescript
+//TODO: Host Cloud Function on oreon.io?
 const IndexPage = (): JSX.Element => (
   <>
     <Layout>
@@ -19,3 +22,4 @@ const IndexPage = (): JSX.Element => (
 );
 
 export default IndexPage;
+

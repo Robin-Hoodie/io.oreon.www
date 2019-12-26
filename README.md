@@ -38,7 +38,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/contact-form-email.js`. Save your changes and the browser will update in real time!
 
 ## 🧐 What's inside?
 
@@ -107,11 +107,11 @@ ESLint will use the recommend lint from (in this order):
   - Typescript
   - Prettier
 
-Latter rules override former rules
+Latter rules override former rules.
 Furthermore we have a `.prettierrc` file in our root directory
 Gatsby will consistently use our eslint rules for checking this
 
 ### Pre-commit check
 
 We're running a pre-commit check on our usage of types with the `type-check` npm command as well as linting our files with the `lint` npm command.
-The `lint` command sets the `max-warnings` to 0, as otherwise ESLint will only exit with a 1 exit code if there are errors, not for warnings.
+The `lint` command sets the `max-warnings` to 0, as otherwise ESLint will only exit with a `1` exit code in case of errors, not for warnings.

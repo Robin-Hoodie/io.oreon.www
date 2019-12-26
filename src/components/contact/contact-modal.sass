@@ -37,7 +37,7 @@
 
   > div
     width: 80%
-    margin: 1rem 0
+    margin: .5rem 0
 
   label
     display: block
@@ -66,3 +66,15 @@
   &:active
     background-color: $primary-color
     color: $secondary-color
+
+.contact-modal__form__invalid
+  input, textarea
+    border-color: $error-color
+
+  label
+    color: $error-color
+
+.contact-modal__form__error-message
+  font-size: .8rem
+  color: $error-color
+  font-weight: bold

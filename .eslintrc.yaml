@@ -17,3 +17,9 @@ rules:
     - double
 globals:
   console: readonly
+  document: readonly
+  require: readonly
+  exports: writable
+  process: readonly
+  module: readonly
+  fetch: readonly
