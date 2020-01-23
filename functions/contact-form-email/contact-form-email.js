@@ -1,7 +1,7 @@
 /* eslint-disable */
 const nodemailer = require("nodemailer");
 const sgTransport = require("nodemailer-sendgrid-transport");
-const config = require('../config');
+const config = require('./config');
 
 const createTransporter = async () => {
   console.log("Sendgrid API KEY " + config.sendgridApiKey);
