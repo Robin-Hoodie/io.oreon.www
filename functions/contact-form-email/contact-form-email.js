@@ -1,20 +1,27 @@
 /* eslint-disable */
-const nodemailer = require("nodemailer");
-const sgTransport = require("nodemailer-sendgrid-transport");
-const config = require('../config');
+// const nodemailer = require("nodemailer");
+// const sgTransport = require("nodemailer-sendgrid-transport");
+// const config = require('../config');
 
-const createTransporter = async () => {
-  console.log("Sendgrid API KEY " + config.sendgridApiKey);
-  return nodemailer.createTransport(sgTransport({
-    auth: {
-      "api_key": config.SENGRID_API_KEY
-    }
-  }));
-};
+// const createTransporter = async () => {
+//   console.log("Sendgrid API KEY " + config.sendgridApiKey);
+//   return nodemailer.createTransport(sgTransport({
+//     auth: {
+//       "api_key": config.SENGRID_API_KEY
+//     }
+//   }));
+// };
 
-exports.handler = async (event, context, callback) => {
-  console.log(`Received event ${event}`);
-
+//TODO: TS with Netlify Lambda, lint this
+exports.handler = async (event, context) => {
+  if (event.httpMethod !== 'GET') {
+    throw "NOT ALLOWED" //Replace this by proper disallowed http response
+  }
+  console.log(`Received event w/ body ${JSON.stringify(event.body)}`);
+  return {
+    statusCode: 200,
+    body: "Hello, world!"
+  };
   // const { message, email, name } = event.body;
   // const transporter = await createTransporter();
   // console.log(`Received message from ${name} with email ${email}`);
