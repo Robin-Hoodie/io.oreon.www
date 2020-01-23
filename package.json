@@ -45,6 +45,7 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
     "postinstall": "netlify-lambda install"
   },
   "repository": {
