@@ -36,7 +36,6 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "prebuild": "cd functions/contact-form-email && npm i",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "lint": "eslint src/ --ext .ts,.tsx --max-warnings 0",

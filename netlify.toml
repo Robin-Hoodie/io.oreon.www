@@ -2,6 +2,9 @@
 
     publish = "public/"
 
-    command = "gatsby build"
+    command = "npm run build && npm i --prefix functions/contact-form-email"
 
     functions = "functions/"
+
+[dev]
+    port = 8080
