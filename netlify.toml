@@ -2,7 +2,7 @@
 
     publish = "public/"
 
-    command = "npm run build && npm i --prefix functions/contact-form-email"
+    command = "npm run build"
 
     functions = "functions/"
 
