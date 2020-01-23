@@ -13,7 +13,7 @@ settings:
     version: detect
 rules:
   quotes:
-    - error
+    - warn
     - double
 globals:
   console: readonly
