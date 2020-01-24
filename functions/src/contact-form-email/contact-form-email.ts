@@ -1,10 +1,11 @@
-/* eslint-disable */
-const nodemailer = require("nodemailer");
-const sgTransport = require("nodemailer-sendgrid-transport");
-const config = require('./config');
+import nodemailer from "nodemailer";
+//@ts-ignore
+import sgTransport from "nodemailer-sendgrid-transport";
+import config from "../config";
+import { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
+import Mail from "nodemailer/lib/mailer";
 
-const createTransporter = async () => {
-  console.log("Sendgrid API KEY " + config.sendGridAPIKey);
+const createTransporter = (): Mail => {
   return nodemailer.createTransport(sgTransport({
     auth: {
       "api_key": config.sendGridAPIKey
@@ -12,18 +13,19 @@ const createTransporter = async () => {
   }));
 };
 
-//TODO: TS with Netlify Lambda
-//TODO: lint this
-exports.handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
+exports.handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
+  if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
       body: JSON.stringify({message: `Method ${event.httpMethod} is not allowed. The only allowed method for this function is 'POST'`})
     }
-    throw "NOT ALLOWED" //Replace this by proper disallowed http response
   }
-  console.log(event.body);
-  console.log(`Received event w/ body ${JSON.stringify(event.body)}`);
+  if (!event.body) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({message: "A body is required to be present in the request"})
+    }
+  }
   const { message, fromEmail, name } = JSON.parse(event.body);
   const transporter = await createTransporter();
   console.log(`Received message from ${name} with email ${fromEmail}`);

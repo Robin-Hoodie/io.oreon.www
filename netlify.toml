@@ -2,9 +2,9 @@
 
     publish = "public/"
 
-    command = "npm run build"
+    command = "npm run build:netlify"
 
-    functions = "functions/"
+    functions = "functions/dist"
 
 [dev]
     port = 8080
