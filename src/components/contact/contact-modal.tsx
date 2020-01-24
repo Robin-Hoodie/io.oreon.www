@@ -1,15 +1,17 @@
-import React, { ChangeEvent, MouseEvent, useState } from "react";
+import React, { ChangeEvent, Dispatch, MouseEvent, useState } from "react";
 
 import "./contact-modal.sass";
 import { sendEmailEndpoint } from "../../config";
+import { LayoutAction } from "../layout";
 
 interface ContactModalProps {
   opened: boolean;
+  layoutDispatch: Dispatch<LayoutAction>;
 }
 
 const simpleEmailRegex = /.+@.+\..+/;
 
-const ContactModal = ({ opened = false }: ContactModalProps): JSX.Element => {
+const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JSX.Element => {
   let classNames = "contact-modal";
   if (opened) {
     classNames += " opened";
@@ -47,6 +49,7 @@ const ContactModal = ({ opened = false }: ContactModalProps): JSX.Element => {
     }));
   };
 
+  //TODO: Show some kind of feedback whether sending was successfull
   const validateAndSendEmail = async (e: MouseEvent<HTMLButtonElement>): Promise<void> => {
     e.preventDefault();
     const response = await fetch(sendEmailEndpoint, {
@@ -55,11 +58,12 @@ const ContactModal = ({ opened = false }: ContactModalProps): JSX.Element => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: formState.email,
-        name: formState.name,
-        message: formState.message
+        fromEmail: formState.email.value,
+        name: formState.name.value,
+        message: formState.message.value
       })
     });
+    layoutDispatch({type: "CLOSE_MODAL"});
     console.log("Response is ", response);
   };
 

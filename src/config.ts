@@ -1,2 +1,2 @@
-const cloudFunctionsEndpoint = "https://europe-west1-oreon-website.cloudfunctions.net";
-export const sendEmailEndpoint = `${cloudFunctionsEndpoint}/contact-form-email`;
+const functionsEndpoint = "/.netlify/functions";
+export const sendEmailEndpoint = `${functionsEndpoint}/contact-form-email`;

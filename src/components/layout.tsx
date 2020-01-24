@@ -79,7 +79,9 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       <Backdrop
         show={state.mobileMenuOpened || state.contactModalOpened}
         layoutDispatch={dispatch} />
-      <ContactModal opened={state.contactModalOpened} />
+      <ContactModal
+        opened={state.contactModalOpened}
+        layoutDispatch={dispatch} />
       <Header
         layoutDispatch={dispatch}
         siteTitle={data.site.siteMetadata.title} />
