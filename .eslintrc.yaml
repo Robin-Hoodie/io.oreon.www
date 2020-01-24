@@ -11,15 +11,12 @@ parserOptions:
 settings:
   react:
     version: detect
+reportUnusedDisableDirectives: true
 rules:
   quotes:
     - warn
     - double
-globals:
-  console: readonly
-  document: readonly
-  require: readonly
-  exports: writable
-  process: readonly
-  module: readonly
-  fetch: readonly
+  "@typescript-eslint/ban-ts-ignore": off
+env:
+  node: true
+  browser: true
