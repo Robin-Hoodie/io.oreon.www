@@ -1,11 +1,8 @@
 {
   "name": "oreon-website-functions",
   "version": "0.1.0",
-  "description": "Google Cloud Functions providing server-side functionality for the oreon-website project",
+  "description": "Netlify functions providing server-side functionality for the oreon-website project",
   "main": "contact-form-email.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Robin Hellemans <robin@oreon.io>",
   "license": "ISC",
   "dependencies": {
