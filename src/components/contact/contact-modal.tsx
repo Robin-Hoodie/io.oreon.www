@@ -52,7 +52,7 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
   //TODO: Show some kind of feedback whether sending was successfull
   const validateAndSendEmail = async (e: MouseEvent<HTMLButtonElement>): Promise<void> => {
     e.preventDefault();
-    const response = await fetch(sendEmailEndpoint, {
+    await fetch(sendEmailEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -64,7 +64,6 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
       })
     });
     layoutDispatch({type: "CLOSE_MODAL"});
-    console.log("Response is ", response);
   };
 
   return (

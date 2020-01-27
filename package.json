@@ -30,6 +30,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@types/aws-lambda": "^8.10.40",
+    "@types/jest": "^25.1.0",
     "@types/node": "^13.1.8",
     "@types/nodemailer": "^6.4.0",
     "@types/react": "^16.9.11",
@@ -37,13 +38,13 @@
     "@types/react-helmet": "^5.0.14",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
+    "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "husky": "^3.0.9",
     "jest": "^25.1.0",
     "netlify-lambda": "^1.6.3",
-    "pretty-quick": "^2.0.0",
     "typescript": "^3.6.4",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
@@ -55,11 +56,10 @@
     "functions:watch": "webpack --mode development --watch",
     "lint": "eslint src/ functions/ --ext .ts,.tsx,.js --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "postinstall": "npm i --prefix functions",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "test": "jest",
-    "type-check": "tsc --noEmit",
+    "test": "jest src",
+    "type-check": "tsc",
     "type-check:watch": "npm run type-check -- --watch"
   },
   "repository": {
@@ -72,6 +72,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run type-check && npm run lint"
+    }
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/config/jest/jest-preprocess.js"
     }
   }
 }
