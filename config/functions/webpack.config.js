@@ -1,15 +1,16 @@
 /* eslint-disable */
 const path = require("path");
+const relativePathToFunctionsDir = "../../functions";
 
 module.exports = () => {
   return {
     entry: {
-      "contact-form-email": path.resolve(__dirname, "./functions/src/contact-form-email/contact-form-email.ts")
+      "contact-form-email": path.resolve(__dirname, `${relativePathToFunctionsDir}/src/contact-form-email/contact-form-email.ts`)
     },
-    context: path.resolve(__dirname, "./functions"),
+    context: path.resolve(__dirname, relativePathToFunctionsDir),
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, "./functions/dist")
+      path: path.resolve(__dirname, `${relativePathToFunctionsDir}/dist`)
     },
     resolve: {
       extensions: [".ts", ".js"]

@@ -54,8 +54,9 @@
   "scripts": {
     "build": "gatsby build",
     "build:netlify": "npm run build && npm run functions:build",
-    "functions:build": "webpack --mode production",
-    "functions:watch": "webpack --mode development --watch",
+    "functions:webpack": "webpack --config config/functions/webpack.config.js",
+    "functions:build": "npm run functions:webpack -- --mode production",
+    "functions:watch": "npm run functions:webpack -- --mode development --watch",
     "lint": "eslint src/ functions/ --ext .ts,.tsx,.js --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "start": "gatsby develop",

@@ -20,8 +20,13 @@ Type checking is done w/ the use of the pre-commit hook mentioned above.
 ## Functions
 
 To build our functions into a production bundle, run `npm run functions:build`, which will çreate a bundle for every function and output it into the `functions/dist` folder.
-To develop with them locally, run `npm run functions:watch`. This will have webpack watch your function code and allow you to run [Netlify dev](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md) on top of it.
-You can then test your functions by running `netlify functions:invoke`
+To watch your functions for changes while developing locally, run `npm run functions:watch`.
+
+### Testing Functions Locally
+
+Once you've built the latest version of your functions or are watching them with `npm run functions:watch`,
+you can run [Netlify dev](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md) on top of it by running `netlify dev`.
+You can then test your functions by running `netlify functions:invoke`.
  
  ## Testing
  
@@ -82,11 +87,9 @@ The path to this preprocessor, along with the filepattern for the files it needs
 
 - Webpack
 
-While Gatsby uses Webpack under the hood, you have probably also noticed the `webpack.config.js` file in the root directory.
-This webpack file is used for bundling our Netlify Functions code, that lives in `functions/`. 
-Again, most important is that this uses the `@babel/preset-typescript` preset for the transpilation process. 
-
-
+While Gatsby uses Webpack under the hood, we're [configuring webpack ourselves](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/functions/webpack.config.js) for our Netlify Functions
+This webpack file is used for bundling our Netlify Functions code, that lives in [functions/](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/functions/). 
+Again, most important is that this uses the [@babel/preset-typescript](https://babeljs.io/docs/en/babel-preset-typescript) preset for the transpilation process. 
 
 #### TODO-List
 
