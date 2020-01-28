@@ -43,7 +43,9 @@ module.exports = {
     {
       resolve: "@robinhoodie/gatsby-plugin-webpack-bundle-analyzer",
       options: {
-        analyzerMode: env === "production" ? "static": "server",
+        // We don't care about the bundle size in development
+        disable: env !== "production",
+        analyzerMode: "static",
         openAnalyzer: false,
         reportFilename: "reports/bundle-analyzer.html"
       }

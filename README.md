@@ -20,7 +20,7 @@ Type checking is done w/ the use of the pre-commit hook mentioned above.
 ## Functions
 
 To build our functions into a production bundle, run `npm run functions:build`, which will çreate a bundle for every function and output it into the `functions/dist` folder.
-To serve them locally, run `npm run functions:serve`. This will have webpack watch your function code and allow you to run [`netlify dev`](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md) on top of it.
+To develop with them locally, run `npm run functions:watch`. This will have webpack watch your function code and allow you to run [Netlify dev](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md) on top of it.
 You can then test your functions by running `netlify functions:invoke`
  
  ## Testing
@@ -53,8 +53,8 @@ The `lint` command sets the `max-warnings` to 0, as otherwise ESLint will only e
 ## Bundle Analysis
 
 We're generating bundle analysis with [@robinhoodie/webpack-bundle-analyzer](https://www.npmjs.com/package/@robinhoodie/gatsby-plugin-webpack-bundle-analyzer).
-On local development you can find the report under `127.0.0.1:8888`.
-For production builds we're generating a static report, which you can retrieve under `/reports/bundle-analyzer.html`
+We're only generating this for production builds for which we're generating a static report, which you can retrieve under `/reports/bundle-analyzer.html`.
+We're not very interested in the bundle size for development builds.
 
 I've forked the plugin from the original [webpack-bundle-analyzer](https://github.com/escaladesports/gatsby-plugin-webpack-bundle-analyzer), 
 though I didn't really agree with the usage of one provided option, so I've removed the option and republished this package under my own username on NPM.
