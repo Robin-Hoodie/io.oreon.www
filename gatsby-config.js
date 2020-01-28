@@ -1,9 +1,12 @@
-/* global module, __dirname */
-/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable */
+const path = require("path");
+
+const env = process.env.NODE_ENV;
+
 module.exports = {
   siteMetadata: {
     title: "Oreon",
-    description: "Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.",
+    description: "Personal website for Oreon",
     author: "Robin-Hoodie",
   },
   plugins: [
@@ -37,6 +40,14 @@ module.exports = {
         test: /\.js$|\.tsx$|\.ts$/,
       },
     },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      options: {
+        analyzerMode: env === "development" ? "server": "static",
+        openAnalyzer: false,
+        reportFilename: "reports/bundle-analyzer.html"
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // "gatsby-plugin-offline",
