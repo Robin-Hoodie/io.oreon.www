@@ -26,7 +26,7 @@ You can then test your functions by running `netlify functions:invoke`
  ## Testing
  
  We use Jest for running our tests. 
- We use `@babel/preset-typescript` in the babel config for Jest (`jest.babel.config.js`) in order to transpile the code.
+ We use `@babel/preset-typescript` in [the babel config for Jest](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/jest/jest-preprocess.js) in order to transpile the code.
  You can run the tests by running the command `npm test`
  
 ## Linting
@@ -76,16 +76,15 @@ We can also run `npm run type-check:watch`, which could be handy during developm
 - Babel
 
 **Gatsby** uses webpack under the hood which in turn uses babel for transpiling our Typescript code
-**Jest** uses babel through a custom preprocessor found in `config/jest/jest-preprocess.js`
+**Jest** uses babel through a custom preprocessor found in [config/jest/jest.preprocess.js](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/jest/jest-preprocess.js)
 
-The path to this preprocessor, along with the filepattern for the files it needs to process, is configured under the `jest` key in `package.json`
+The path to this preprocessor, along with the filepattern for the files it needs to process, is configured in 
 
 - Webpack
 
 While Gatsby uses Webpack under the hood, you have probably also noticed the `webpack.config.js` file in the root directory.
 This webpack file is used for bundling our Netlify Functions code, that lives in `functions/`. 
 Again, most important is that this uses the `@babel/preset-typescript` preset for the transpilation process. 
-
 
 
 
@@ -101,5 +100,5 @@ This serves as a personal reference and replacement for an issue tracker
 - Use focus states for buttons and links
 - Set up Dockerfile to run this code easier locally
 - Generate proptypes from TS definitions
-- Webpack bundle analysis
 - PR comment bot?
+- Reference files in README by Github links instead of `quotes` 

@@ -28,7 +28,9 @@
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@robinhoodie/gatsby-plugin-webpack-bundle-analyzer": "^1.1.0",
     "@types/aws-lambda": "^8.10.40",
     "@types/jest": "^25.1.0",
     "@types/node": "^13.5.0",
@@ -42,7 +44,6 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
-    "@robinhoodie/gatsby-plugin-webpack-bundle-analyzer": "^1.1.0",
     "husky": "^3.0.9",
     "jest": "^25.1.0",
     "netlify-lambda": "^1.6.3",
@@ -59,7 +60,7 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "test": "jest src",
+    "test": "jest src --config config/jest/jest.config.js",
     "type-check": "tsc",
     "type-check:watch": "npm run type-check -- --watch"
   },
@@ -73,11 +74,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run type-check && npm run lint"
-    }
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/config/jest/jest-preprocess.js"
     }
   }
 }
