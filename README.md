@@ -1,102 +1,34 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+This repo is the source for my personal website, found at https://www.oreon.io
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+I use Netlify for building, deploying and hosting my code
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Gatsby is used as a SSG and works well in tandem with Netlify
 
-## 🚀 Quick start
+## Type checking
 
-1.  **Create a Gatsby site.**
-
-    Use the Gatsby CLI to create a new site, specifying the default starter.
-
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
-
-1.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/contact-form-email.js`. Save your changes and the browser will update in real time!
-
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
-
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
-
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
-
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Type checking happens at commit-time, by running a pre-commit hook which runs `tsc` to check the types.
+Ideally, we'd include this check in a CI pipeline as well, as pre-commits can be avoided through git CLI options
 
 
+## Babel
+
+Gatsby uses babel to compile our code to standard JS.
+Thanks to [gatsby-plugin-typescript](https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/) our code does not get typechecked during development but only compiled.
+For functions, we run our own webpack config which does the compiling for us via `babel-loader` and its `@babel/preset-typescript` (which ia also being used by `gatsby-plugin-typescript` under the hood)
+Type checking is done w/ the use of the pre-commit hook mentioned above.
+
+## Functions
+
+To build our functions into a production bundle, run `npm run functions:build`, which will çreate a bundle for every function and output it into the `functions/dist` folder.
+To serve them locally, run `npm run functions:serve`. This will have webpack watch your function code and allow you to run [`netlify dev`](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md) on top of it.
+You can then test your functions by running `netlify functions:invoke`
+ 
+ ## Testing
+ 
+ We use Jest for running our tests. 
+ We use `@babel/preset-typescript` in the babel config for Jest (`jest.babel.config.js`) in order to transpile the code.
+ You can run the tests by running the command `npm test`
+ 
 ## Linting
 
 We're using ESLint for linting our files
@@ -105,13 +37,69 @@ ESLint will use the recommend lint from (in this order):
   - Eslint
   - React
   - Typescript
-  - Prettier
 
 Latter rules override former rules.
-Furthermore we have a `.prettierrc` file in our root directory
 Gatsby will consistently use our eslint rules for checking this
+
+## Type checking
+
+As babel does not type check code, you can either run the one-off command `npm run type-check` or continuously monitor for type checking with the command `npm run type-check:watch`
 
 ### Pre-commit check
 
 We're running a pre-commit check on our usage of types with the `type-check` npm command as well as linting our files with the `lint` npm command.
 The `lint` command sets the `max-warnings` to 0, as otherwise ESLint will only exit with a `1` exit code in case of errors, not for warnings.
+
+## Bundle Analysis
+
+We're generating bundle analysis with [@robinhoodie/webpack-bundle-analyzer](https://www.npmjs.com/package/@robinhoodie/gatsby-plugin-webpack-bundle-analyzer).
+On local development you can find the report under `127.0.0.1:8888`.
+For production builds we're generating a static report, which you can retrieve under `/reports/bundle-analyzer.html`
+
+I've forked the plugin from the original [webpack-bundle-analyzer](https://github.com/escaladesports/gatsby-plugin-webpack-bundle-analyzer), 
+though I didn't really agree with the usage of one provided option, so I've removed the option and republished this package under my own username on NPM.
+I've also opened a PR to remove the option on the original repo, if it's accepted we'll revert back to using the original plugin.
+You can view the PR here: https://github.com/escaladesports/gatsby-plugin-webpack-bundle-analyzer/pull/12
+
+The report of the live site can be found here: https://www.oreon.io/reports/bundle-analyzer.html
+
+# Overview of build systems
+
+- Typescript:
+
+We don't use `tsc` (the Typescript compiler) for anything apart from type checking our code, though it won't actually produce any output (`noEmit` is set to `true`)
+We do use the options set in `tsconfig.json` through `@babel/preset-typescript`, which is a preset for Babel (duh) to transpile our code.
+
+We can run `npm run type-check` as a one-off command which is also set to run in the pre-commit hook.
+We can also run `npm run type-check:watch`, which could be handy during development. 
+
+- Babel
+
+**Gatsby** uses webpack under the hood which in turn uses babel for transpiling our Typescript code
+**Jest** uses babel through a custom preprocessor found in `config/jest/jest-preprocess.js`
+
+The path to this preprocessor, along with the filepattern for the files it needs to process, is configured under the `jest` key in `package.json`
+
+- Webpack
+
+While Gatsby uses Webpack under the hood, you have probably also noticed the `webpack.config.js` file in the root directory.
+This webpack file is used for bundling our Netlify Functions code, that lives in `functions/`. 
+Again, most important is that this uses the `@babel/preset-typescript` preset for the transpilation process. 
+
+
+
+
+#### TODO-List
+
+This serves as a personal reference and replacement for an issue tracker
+
+- Mobile toggle can be done as SVG
+- Mobile sidemenu width is not okay on mobile phones
+- Mobile items need feedback on clicking them
+- Use different visual cue for hovering over links than buttons do
+- Get logo to use as icon
+- Use focus states for buttons and links
+- Set up Dockerfile to run this code easier locally
+- Generate proptypes from TS definitions
+- Webpack bundle analysis
+- PR comment bot?
