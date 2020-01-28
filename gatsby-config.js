@@ -41,9 +41,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      resolve: "@robinhoodie/gatsby-plugin-webpack-bundle-analyzer",
       options: {
-        analyzerMode: env === "development" ? "server": "static",
+        production: env === "production", // If this is false, no report will be generated, despite setting "analyzerMode" to "static"
+        analyzerMode: env === "production" ? "static": "server",
         openAnalyzer: false,
         reportFilename: "reports/bundle-analyzer.html"
       }
