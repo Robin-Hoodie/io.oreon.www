@@ -3,3 +3,4 @@ public/
 dist/
 config/
 __mocks__/
+gatsby-*.js

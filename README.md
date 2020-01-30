@@ -91,6 +91,23 @@ While Gatsby uses Webpack under the hood, we're [configuring webpack ourselves](
 This webpack file is used for bundling our Netlify Functions code, that lives in [functions/](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/functions/). 
 Again, most important is that this uses the [@babel/preset-typescript](https://babeljs.io/docs/en/babel-preset-typescript) preset for the transpilation process. 
 
+## Adding blogposts
+
+Blogposts can be added by adding a markdown file to [src/data/content](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/src/data/content).
+
+The path at which the blog will be published is `/blogs` + the filename (without extension). 
+Make sure the post has a title specified in its frontmatter.
+E.g.
+```
+//File src/data/content/cats.md
+---
+title: "Cats are awesome"
+---
+I love cats, they can sometimes be a bit naughty though
+```
+By creating this markdown file, the next time the code is pushed to `master` (and subsequently deployed), you'll find yourblogpost on `/blogs/cats`.
+The code related to the automatic creation of this page, and the inferred path can be found in [gatsby-node.js](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/gatsby-node.js)
+
 #### TODO-List
 
 This serves as a personal reference and replacement for an issue tracker
@@ -106,3 +123,7 @@ This serves as a personal reference and replacement for an issue tracker
 - Reference files in README by Github links instead of `quotes` 
 - Add E2E tests
 - Add CI pipeline?
+- Add tests for graphql queries
+- CSS Modules with Sass
+- Blog link should be highlighted when active path contains /blog
+- Add links to all blogposts

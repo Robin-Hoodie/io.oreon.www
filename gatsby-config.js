@@ -14,11 +14,17 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "images",
-        path: `${__dirname}/src/images`,
+        path: path.resolve(__dirname, "src/data/images"),
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: path.resolve(__dirname, "src/data/content"),
       },
     },
     "gatsby-transformer-sharp",
+    "gatsby-transformer-remark",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sass",
     {
@@ -30,12 +36,12 @@ module.exports = {
         background_color: "black",
         theme_color: "black",
         display: "minimal-ui",
-        icon: "src/images/icon.png", // This path is relative to the root of the site.,
+        icon: "src/data/images/icon.png", // This path is relative to the root of the site.,
       },
     },
-    "gatsby-plugin-typescript",
+    "gatsby-plugin-typescript", // Transform typescript with @babel/preset-typescript
     {
-      resolve: "gatsby-plugin-eslint",
+      resolve: "gatsby-plugin-eslint", // Log linting errors
       options: {
         test: /\.js$|\.tsx$|\.ts$/,
       },
@@ -43,15 +49,11 @@ module.exports = {
     {
       resolve: "@robinhoodie/gatsby-plugin-webpack-bundle-analyzer",
       options: {
-        // We don't care about the bundle size in development
-        disable: env !== "production",
+        disable: env !== "production", // We don't care about the bundle size in development
         analyzerMode: "static",
         openAnalyzer: false,
         reportFilename: "reports/bundle-analyzer.html"
       }
     }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // "gatsby-plugin-offline",
   ],
 };
