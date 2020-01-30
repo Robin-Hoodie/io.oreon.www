@@ -50,6 +50,7 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
   };
 
   //TODO: Show some kind of feedback whether sending was successfull
+  //TODO: Validate form
   const validateAndSendEmail = async (e: MouseEvent<HTMLButtonElement>): Promise<void> => {
     e.preventDefault();
     await fetch(sendEmailEndpoint, {
@@ -63,7 +64,7 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
         message: formState.message.value
       })
     });
-    layoutDispatch({type: "CLOSE_MODAL"});
+    layoutDispatch({ type: "CLOSE_MODAL" });
   };
 
   return (
@@ -75,6 +76,7 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
         <div className="contact-modal__form__name">
           <label htmlFor="name">Name <span style={{ fontWeight: "bold" }}>*</span></label>
           <input
+            id="name"
             required
             value={formState.name.value}
             onChange={updateFormState}
@@ -88,6 +90,7 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
         <div className="contact-modal__form__email">
           <label htmlFor="email">Email Address <span style={{ fontWeight: "bold" }}>*</span></label>
           <input
+            id="email"
             required
             value={formState.email.value}
             onChange={updateFormState}
@@ -101,6 +104,7 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
         <div className="contact-modal__form__message">
           <label htmlFor="message">Send me a message</label>
           <textarea
+            id="message"
             required
             value={formState.message.value}
             onChange={updateFormState}

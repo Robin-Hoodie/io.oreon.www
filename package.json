@@ -31,6 +31,8 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@robinhoodie/gatsby-plugin-webpack-bundle-analyzer": "^1.1.0",
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/react": "^9.4.0",
     "@types/aws-lambda": "^8.10.40",
     "@types/jest": "^25.1.0",
     "@types/node": "^13.5.0",
@@ -42,10 +44,13 @@
     "@typescript-eslint/parser": "^2.6.0",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "babel-preset-gatsby": "^0.2.27",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "husky": "^3.0.9",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
+    "jest-fetch-mock": "^3.0.1",
     "netlify-lambda": "^1.6.3",
     "typescript": "^3.6.4",
     "webpack": "^4.41.5",
@@ -62,6 +67,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "test": "jest src --config config/jest/jest.config.js",
+    "test:watch": "npm test -- --watch",
     "type-check": "tsc",
     "type-check:watch": "npm run type-check -- --watch"
   },
@@ -74,7 +80,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run type-check && npm run lint"
+      "pre-commit": "npm test && npm run type-check && npm run lint"
     }
   }
 }

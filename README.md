@@ -32,7 +32,7 @@ You can then test your functions by running `netlify functions:invoke`.
  
  We use Jest for running our tests. 
  We use `@babel/preset-typescript` in [the babel config for Jest](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/jest/jest-preprocess.js) in order to transpile the code.
- You can run the tests by running the command `npm test`
+ You can run the tests by running the one-off command `npm test`, or have them run in watch mode with `npm run test:watch` 
  
 ## Linting
 
@@ -96,7 +96,6 @@ Again, most important is that this uses the [@babel/preset-typescript](https://b
 This serves as a personal reference and replacement for an issue tracker
 
 - Mobile toggle can be done as SVG
-- Mobile sidemenu width is not okay on mobile phones
 - Mobile items need feedback on clicking them
 - Use different visual cue for hovering over links than buttons do
 - Get logo to use as icon
@@ -105,3 +104,5 @@ This serves as a personal reference and replacement for an issue tracker
 - Generate proptypes from TS definitions
 - PR comment bot?
 - Reference files in README by Github links instead of `quotes` 
+- Add E2E tests
+- Add CI pipeline?

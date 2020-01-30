@@ -10,6 +10,7 @@ interface MobileToggleProps {
 
 const MobileMenuButton = ({ onClick }: MobileToggleProps): JSX.Element => (
     <div
+      data-testid="mobile-menu"
       className="mobile-menu-button"
       onClick={onClick}>
       <div className="mobile-menu-button__bar" />

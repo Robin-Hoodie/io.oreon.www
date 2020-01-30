@@ -5,13 +5,13 @@ import "./backdrop.sass";
 import { LayoutAction } from "./layout";
 
 interface BackdropProps {
-  show: boolean;
+  opened: boolean;
   layoutDispatch: Dispatch<LayoutAction>;
 }
 
-const Backdrop = ({ show = false, layoutDispatch }: BackdropProps): JSX.Element => {
+const Backdrop = ({ opened = false, layoutDispatch }: BackdropProps): JSX.Element => {
   let classNames = "backdrop";
-  if (show) {
+  if (opened) {
     classNames += " opened";
   }
   return (
@@ -26,7 +26,7 @@ const Backdrop = ({ show = false, layoutDispatch }: BackdropProps): JSX.Element 
 };
 
 Backdrop.propTypes = {
-  show: PropTypes.bool.isRequired,
+  opened: PropTypes.bool.isRequired,
   layoutDispatch: PropTypes.func.isRequired
 };
 

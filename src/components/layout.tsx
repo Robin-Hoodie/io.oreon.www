@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
       <Backdrop
-        show={state.mobileMenuOpened || state.contactModalOpened}
+        opened={state.mobileMenuOpened || state.contactModalOpened}
         layoutDispatch={dispatch} />
       <ContactModal
         opened={state.contactModalOpened}
