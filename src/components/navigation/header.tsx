@@ -25,6 +25,7 @@ const Header = ({ layoutDispatch, siteTitle }: HeaderProps): JSX.Element => (
       <Link
         to="/blog/"
         className="header__link"
+        partiallyActive={true}
         activeClassName="header__link--active">
         Blog
       </Link>
