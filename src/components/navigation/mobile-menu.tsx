@@ -1,5 +1,4 @@
 import React, { Dispatch } from "react";
-import PropTypes from "prop-types";
 
 import "./mobile-menu.sass";
 import "./menu-item.sass";
@@ -39,11 +38,6 @@ const MobileMenu = ({ layoutDispatch, opened = false }: MobileMenuProps): JSX.El
       </button>
     </nav>
   );
-};
-
-MobileMenu.propTypes = {
-  layoutDispatch: PropTypes.func.isRequired,
-  opened: PropTypes.bool.isRequired,
 };
 
 export default MobileMenu;

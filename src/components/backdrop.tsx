@@ -1,5 +1,4 @@
 import React, { Dispatch } from "react";
-import PropTypes from "prop-types";
 
 import "./backdrop.sass";
 import { LayoutAction } from "./layout";
@@ -23,11 +22,6 @@ const Backdrop = ({ opened = false, layoutDispatch }: BackdropProps): JSX.Elemen
       className={classNames}>
     </div>
   );
-};
-
-Backdrop.propTypes = {
-  opened: PropTypes.bool.isRequired,
-  layoutDispatch: PropTypes.func.isRequired
 };
 
 export default Backdrop;

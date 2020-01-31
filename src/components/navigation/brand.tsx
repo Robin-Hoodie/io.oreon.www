@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import "./brand.sass";
@@ -15,9 +14,5 @@ const Brand = ({ siteTitle }: BrandProps): JSX.Element => (
     {siteTitle}
   </Link>
 );
-
-Brand.propTypes = {
-  siteTitle: PropTypes.string.isRequired
-};
 
 export default Brand;

@@ -54,6 +54,12 @@ module.exports = {
         openAnalyzer: false,
         reportFilename: "reports/bundle-analyzer.html"
       }
+    },
+    {
+      resolve: "gatsby-plugin-babel-plugin-typescript-to-proptypes",
+      options: {
+        disable: env === "production"
+      }
     }
-  ],
+  ]
 };

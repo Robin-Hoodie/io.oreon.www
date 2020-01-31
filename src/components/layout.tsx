@@ -6,7 +6,6 @@
  */
 
 import { graphql, useStaticQuery } from "gatsby";
-import PropTypes from "prop-types";
 import React, { useReducer } from "react";
 
 import Header from "./navigation/header";
@@ -94,10 +93,6 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       </main>
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

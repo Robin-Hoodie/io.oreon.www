@@ -126,4 +126,3 @@ This serves as a personal reference and replacement for an issue tracker
 - Add tests for graphql queries
 - CSS Modules with Sass
 - Blog link should be highlighted when active path contains /blog
-- Add links to all blogposts

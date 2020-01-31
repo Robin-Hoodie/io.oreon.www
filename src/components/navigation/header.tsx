@@ -1,5 +1,4 @@
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
 import React, { Dispatch } from "react";
 
 import "./header.sass";
@@ -40,10 +39,5 @@ const Header = ({ layoutDispatch, siteTitle }: HeaderProps): JSX.Element => (
     </nav>
   </header>
 );
-
-Header.propTypes = {
-  layoutDispatch: PropTypes.func.isRequired,
-  siteTitle: PropTypes.string.isRequired
-};
 
 export default Header;
