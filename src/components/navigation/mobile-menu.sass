@@ -1,4 +1,5 @@
 @import "../../variables"
+@import "./menu-item"
 
 .mobile-menu
   display: flex
@@ -19,3 +20,16 @@
   &.opened
     transform: scaleY(1)
     opacity: 1
+
+.mobile-menu__link
+  @extend .menu-item
+  margin: $mobile-link-margin
+  display: initial
+
+  &:hover
+    opacity: 0.5
+
+.mobile-menu__cta
+  @extend .menu-item
+  display: initial
+  cursor: pointer

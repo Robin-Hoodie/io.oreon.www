@@ -1,7 +1,6 @@
 import React, { Dispatch } from "react";
 
 import "./mobile-menu.sass";
-import "./menu-item.sass";
 import { Link } from "gatsby";
 import { LayoutAction } from "../layout";
 

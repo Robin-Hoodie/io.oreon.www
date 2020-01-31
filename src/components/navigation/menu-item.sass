@@ -1,55 +1,12 @@
 @import "../../variables"
-@import "../../mixins"
 
 $menu-item-padding: .5rem 1rem
 $mobile-link-margin: .5rem 0
 
+//Shared base class for both header.sass and mobile-menu.sass
 .menu-item
   color: $primary-color
   font-weight: bold
   padding: $menu-item-padding
   text-transform: uppercase
   letter-spacing: 2px
-
-.header__link
-  @extend .menu-item
-  display: none
-  margin: 0 .5rem
-  transition: $button-transition
-
-  &:hover,
-  &:active,
-  &--active
-    color: $secondary-color
-    background-color: $primary-color
-
-  @include desktop-media-query()
-    display: initial
-
-.header__cta
-  @extend .menu-item
-  display: none
-  transition: $button-transition
-  cursor: pointer
-
-  &:hover,
-  &:active
-    color: $secondary-color
-    background-color: $primary-color
-
-  @include desktop-media-query()
-    margin-left: auto
-    display: initial
-
-.mobile-menu__link
-  @extend .menu-item
-  margin: $mobile-link-margin
-  display: initial
-
-  &:hover
-    opacity: 0.5
-
-.mobile-menu__cta
-  @extend .menu-item
-  display: initial
-  cursor: pointer

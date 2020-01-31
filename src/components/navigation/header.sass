@@ -1,4 +1,6 @@
 @import "../../variables"
+@import "../../mixins"
+@import "./menu-item"
 
 .header
   position: fixed
@@ -9,6 +11,36 @@
   height: $header-height
   padding: 1rem
   background-color: $secondary-color
+
+.header__link
+  @extend .menu-item
+  display: none
+  margin: 0 .5rem
+  transition: $button-transition
+
+  &:hover,
+  &:active,
+  &--active
+    color: $secondary-color
+    background-color: $primary-color
+
+  @include desktop-media-query()
+    display: initial
+
+.header__cta
+  @extend .menu-item
+  display: none
+  transition: $button-transition
+  cursor: pointer
+
+  &:hover,
+  &:active
+    color: $secondary-color
+    background-color: $primary-color
+
+  @include desktop-media-query()
+    margin-left: auto
+    display: initial
 
 .header__navigation-bar
   display: flex

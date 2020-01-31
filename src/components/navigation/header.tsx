@@ -2,7 +2,6 @@ import { Link } from "gatsby";
 import React, { Dispatch } from "react";
 
 import "./header.sass";
-import "./menu-item.sass";
 import MobileMenuButton from "./mobile-menu-button";
 import Brand from "./brand";
 import { LayoutAction } from "../layout";
