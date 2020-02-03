@@ -2,42 +2,39 @@ import React from "react";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { graphql, Link } from "gatsby";
-
+import { graphql } from "gatsby";
+import ReactMarkdown from "react-markdown";
 import classes from "./blog-template.module.sass";
 
 export const query = graphql`query ($title: String!) {
-  markdownRemark(frontmatter: {title: {eq: $title} } ) {
-    html
+  blog: markdownRemark(frontmatter: {title: {eq: $title} } ) {
     frontmatter {
       title
       date(formatString: "D MMM YYYY")
     }
+    content: rawMarkdownBody
   }
 }`;
 
 interface BlogProps {
   data: {
-    markdownRemark: {
+    blog: {
       frontmatter: {
         title: string;
         date: string;
       };
-      html: string;
+      content: string;
     };
   };
 }
 
-const BlogTemplate = ({ data: { markdownRemark } }: BlogProps): JSX.Element => (
+const BlogTemplate = ({ data: { blog } }: BlogProps): JSX.Element => (
   <Layout>
-    <SEO title={`Blog: ${markdownRemark.frontmatter.title}`} />
-    <Link
-      to="/blog"
-      className={classes.backLink}>&larr; Back to blog overview</Link>
-    <h1 className={classes.blogTitle}>{markdownRemark.frontmatter.title}</h1>
-    <div className={classes.blogDate}>{markdownRemark.frontmatter.date}</div>
-    <article
-      dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
+    <SEO title={`Blog: ${blog.frontmatter.title}`} />
+    <h1 className={classes.blogTitle}>{blog.frontmatter.title}</h1>
+    <div className={classes.blogDate}>{blog.frontmatter.date}</div>
+    <ReactMarkdown
+      source={blog.content}
       className={classes.blogContent} />
   </Layout>
 );
