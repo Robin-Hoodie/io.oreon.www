@@ -1,5 +1,6 @@
 @import "../../mixins"
 @import "../../variables"
+@import "../../common.module" // Re-export common classes by importing this file
 
 .contact-modal
   visibility: hidden
@@ -29,7 +30,7 @@
     margin: 0
 
 
-.contact-modal__form
+.form
   display: flex
   justify-content: center
   flex-direction: column
@@ -51,13 +52,13 @@
     padding: .25rem
 
 
-.contact-modal__form__message
+.message
   > textarea
     width: 100%
     padding: .5rem
     resize: vertical
 
-.contact-modal__form__submit
+.submit
   padding: 1rem 2rem
   transition: $button-transition
   cursor: pointer
@@ -67,14 +68,14 @@
     background-color: $primary-color
     color: $secondary-color
 
-.contact-modal__form__invalid
+.invalid
   input, textarea
     border-color: $error-color
 
   label
     color: $error-color
 
-.contact-modal__form__error-message
+.error-message
   font-size: .8rem
   color: $error-color
   font-weight: bold

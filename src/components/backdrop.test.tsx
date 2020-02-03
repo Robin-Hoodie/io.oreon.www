@@ -1,6 +1,7 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
 import Backdrop from "./backdrop";
+import classes from "./backdrop.module.sass";
 
 describe("Backdrop", () => {
   test("setting the 'opened' property to 'true' should add the 'opened' class to <Backdrop/>", () => {
@@ -9,7 +10,7 @@ describe("Backdrop", () => {
         opened={true}
         layoutDispatch={jest.fn()} />
     );
-    expect(container.firstChild).toHaveClass("opened");
+    expect(container.firstChild).toHaveClass(classes.opened);
   });
 
   test("setting the 'opened' property to 'false' should NOT add the 'opened' class to <Backdrop/>", () => {
@@ -18,7 +19,7 @@ describe("Backdrop", () => {
         opened={false}
         layoutDispatch={jest.fn()} />
     );
-    expect(container.firstChild).not.toHaveClass("opened");
+    expect(container.firstChild).not.toHaveClass(classes.opened);
   });
 
   test("clicking the backdrop should trigger 2 'layoutDispatch' calls", () => {

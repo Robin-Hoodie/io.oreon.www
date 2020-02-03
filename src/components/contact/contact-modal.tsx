@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Dispatch, MouseEvent, useState } from "react";
 
-import "./contact-modal.sass";
+import classes from "./contact-modal.module.sass";
 import { sendEmailEndpoint } from "../../config";
 import { LayoutAction } from "../layout";
 
@@ -12,9 +12,9 @@ interface ContactModalProps {
 const simpleEmailRegex = /.+@.+\..+/;
 
 const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JSX.Element => {
-  let classNames = "contact-modal";
+  const classNames = [classes.contactModal];
   if (opened) {
-    classNames += " opened";
+    classNames.push(classes.opened);
   }
   const [formState, setFormState] = useState({
     name: {
@@ -68,54 +68,54 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
   };
 
   return (
-    <dialog className={classNames}>
+    <dialog className={classNames.join(" ")}>
       <h1>Contact Me</h1>
       <form
-        className="contact-modal__form"
+        className={classes.form}
         noValidate>
-        <div className="contact-modal__form__name">
+        <div>
           <label htmlFor="name">Name <span style={{ fontWeight: "bold" }}>*</span></label>
           <input
             id="name"
             required
             value={formState.name.value}
             onChange={updateFormState}
-            className={formState.name.valid ? "contact-modal__form__valid" : "contact-modal__form__invalid"}
+            className={formState.name.valid ? classes.valid : classes.invalid}
             type="text"
             name="name" />
           <span
-            className="contact-modal__form__error-message"
+            className={classes.errorMessage}
             style={{ visibility: formState.name.valid ? "hidden" : "visible" }}>I&apos;d like to know how to address you</span>
         </div>
-        <div className="contact-modal__form__email">
+        <div>
           <label htmlFor="email">Email Address <span style={{ fontWeight: "bold" }}>*</span></label>
           <input
             id="email"
             required
             value={formState.email.value}
             onChange={updateFormState}
-            className={formState.email.valid ? "contact-modal__form__valid" : "contact-modal__form__invalid"}
+            className={formState.email.valid ? "" : classes.invalid}
             type="email"
             name="email" />
           <span
-            className="contact-modal__form__error-message"
+            className={classes.errorMessage}
             style={{ visibility: formState.email.valid ? "hidden" : "visible" }}>I can&apos;t reply if I don&apos;t know how to reach you</span>
         </div>
-        <div className="contact-modal__form__message">
+        <div className={classes.message}>
           <label htmlFor="message">Send me a message</label>
           <textarea
             id="message"
             required
             value={formState.message.value}
             onChange={updateFormState}
-            className={formState.message.valid ? "contact-modal__form__valid" : "contact-modal__form__invalid"}
+            className={formState.message.valid ? "" : classes.invalid}
             name="message" />
           <span
-            className="contact-modal__form__error-message"
+            className={classes.errorMessage}
             style={{ visibility: formState.message.valid ? "hidden" : "visible" }}>Sending an empty message wouldn&apos;t make a lot of sense, now would it?</span>
         </div>
         <button
-          className="default-button contact-modal__form__submit"
+          className={`${classes.defaultButton} ${classes.submit}`}
           onClick={validateAndSendEmail}
           type="submit">
           Send Message

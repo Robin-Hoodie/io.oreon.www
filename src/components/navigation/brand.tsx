@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import "./brand.sass";
+import classes from "./brand.module.sass";
 
 interface BrandProps {
   siteTitle: string;
@@ -10,7 +10,7 @@ interface BrandProps {
 const Brand = ({ siteTitle }: BrandProps): JSX.Element => (
   <Link
     to="/"
-    className="brand">
+    className={classes.brand}>
     {siteTitle}
   </Link>
 );

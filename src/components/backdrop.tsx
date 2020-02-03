@@ -1,6 +1,6 @@
 import React, { Dispatch } from "react";
 
-import "./backdrop.sass";
+import classes from "./backdrop.module.sass";
 import { LayoutAction } from "./layout";
 
 interface BackdropProps {
@@ -9,9 +9,9 @@ interface BackdropProps {
 }
 
 const Backdrop = ({ opened = false, layoutDispatch }: BackdropProps): JSX.Element => {
-  let classNames = "backdrop";
+  const classNames = [classes.backdrop];
   if (opened) {
-    classNames += " opened";
+    classNames.push(classes.opened);
   }
   return (
     <div
@@ -19,7 +19,7 @@ const Backdrop = ({ opened = false, layoutDispatch }: BackdropProps): JSX.Elemen
         layoutDispatch({ type: "CLOSE_MODAL" });
         layoutDispatch({ type: "CLOSE_MOBILE_MENU" });
       }}
-      className={classNames}>
+      className={classNames.join(" ")}>
     </div>
   );
 };

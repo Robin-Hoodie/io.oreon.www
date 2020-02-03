@@ -1,5 +1,6 @@
 @import "../../variables"
 @import "./menu-item"
+@import "../../common.module" // Re-export common classes by importing this file
 
 .mobile-menu
   display: flex
@@ -21,7 +22,7 @@
     transform: scaleY(1)
     opacity: 1
 
-.mobile-menu__link
+.link
   @extend .menu-item
   margin: $mobile-link-margin
   display: initial
@@ -29,7 +30,7 @@
   &:hover
     opacity: 0.5
 
-.mobile-menu__cta
+.cta
   @extend .menu-item
   display: initial
   cursor: pointer

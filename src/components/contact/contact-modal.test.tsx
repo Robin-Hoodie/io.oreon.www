@@ -1,6 +1,7 @@
 import React from "react";
 import { fireEvent, render, wait } from "@testing-library/react";
 import ContactModal from "./contact-modal";
+import classes from "contact-modal.module.sass";
 
 const fireChangeEventWithEmptyString = (input: Element): void => {
   //First input something, otherwise the second change event does not fire
@@ -13,25 +14,25 @@ const fireChangeEventWithEmptyString = (input: Element): void => {
 };
 
 describe("ContactModal", () => {
-  test("setting the 'opened' property to 'true' should add the 'opened' class to <ContactModal/>", () => {
+  test("setting the 'opened' property to 'true' should add the opened class to <ContactModal/>", () => {
     const { container } = render(
       <ContactModal
         opened={true}
         layoutDispatch={jest.fn()} />
     );
-    expect(container.firstChild).toHaveClass("opened");
+    expect(container.firstChild).toHaveClass(classes.opened);
   });
 
-  test("setting the 'opened' property to 'false' should NOT add the 'opened' class to <ContactModal/>", () => {
+  test("setting the 'opened' property to 'false' should NOT add the opened class to <ContactModal/>", () => {
     const { container } = render(
       <ContactModal
         opened={false}
         layoutDispatch={jest.fn()} />
     );
-    expect(container.firstChild).not.toHaveClass("opened");
+    expect(container.firstChild).not.toHaveClass(classes.opened);
   });
 
-  test("should set the valid class when filling in a name", () => {
+  test("should NOT set the invalid class when filling in a name", () => {
     const { getByLabelText } = render(
       <ContactModal
         opened={true}
@@ -42,7 +43,7 @@ describe("ContactModal", () => {
     fireEvent.change(nameInput, {
       target: { value: "Robin" }
     });
-    expect(nameInput).toHaveClass("contact-modal__form__valid");
+    expect(nameInput).not.toHaveClass(classes.invalid);
   });
 
   test("should set the invalid class when filling in an empty string", () => {
@@ -54,10 +55,10 @@ describe("ContactModal", () => {
     const nameInput = getByLabelText(/name/i);
     fireChangeEventWithEmptyString(nameInput);
 
-    expect(nameInput).toHaveClass("contact-modal__form__invalid");
+    expect(nameInput).toHaveClass(classes.invalid);
   });
 
-  test("should set the valid class when filling in a valid email address", () => {
+  test("should NOT set the invalid class when filling in a valid email address", () => {
     const { getByLabelText } = render(
       <ContactModal
         opened={true}
@@ -67,7 +68,7 @@ describe("ContactModal", () => {
     fireEvent.change(emailInput, {
       target: { value: "robin@oreon.io" }
     });
-    expect(emailInput).toHaveClass("contact-modal__form__valid");
+    expect(emailInput).not.toHaveClass(classes.invalid);
   });
 
   test("should set the invalid class when filling in an empty string as the email address", () => {
@@ -78,7 +79,7 @@ describe("ContactModal", () => {
     );
     const emailInput = getByLabelText(/email/i);
     fireChangeEventWithEmptyString(emailInput);
-    expect(emailInput).toHaveClass("contact-modal__form__invalid");
+    expect(emailInput).toHaveClass(classes.invalid);
   });
 
   test("should set the invalid class when filling in an email address without '@'", () => {
@@ -91,7 +92,7 @@ describe("ContactModal", () => {
     fireEvent.change(emailInput, {
       target: { value: "robin" }
     });
-    expect(emailInput).toHaveClass("contact-modal__form__invalid");
+    expect(emailInput).toHaveClass(classes.invalid);
   });
 
   test("should call layoutDispatch when clicking on the submit button", async () => {

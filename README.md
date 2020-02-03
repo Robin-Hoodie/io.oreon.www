@@ -124,4 +124,4 @@ This serves as a personal reference and replacement for an issue tracker
 - Add E2E tests
 - Add CI pipeline?
 - Add tests for graphql queries
-- CSS Modules with Sass - problem is we don't have type definitions or scoping
+- Stronger typed SASS modules, we're making use of "any" default exports, could type sass files themselves

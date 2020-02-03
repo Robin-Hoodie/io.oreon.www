@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./mobile-menu-button.sass";
+import classes from "./mobile-menu-button.module.sass";
 
 interface MobileToggleProps {
   onClick: () => void;
@@ -10,11 +10,11 @@ interface MobileToggleProps {
 const MobileMenuButton = ({ onClick }: MobileToggleProps): JSX.Element => (
     <div
       data-testid="mobile-menu"
-      className="mobile-menu-button"
+      className={classes.mobileMenuButton}
       onClick={onClick}>
-      <div className="mobile-menu-button__bar" />
-      <div className="mobile-menu-button__bar" />
-      <div className="mobile-menu-button__bar" />
+      <div className={classes.mobileMenuButtonBar} />
+      <div className={classes.mobileMenuButtonBar} />
+      <div className={classes.mobileMenuButtonBar} />
     </div>
 );
 

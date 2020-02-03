@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React, { Dispatch } from "react";
 
-import "./header.sass";
+import classes from "./header.module.sass";
 import MobileMenuButton from "./mobile-menu-button";
 import Brand from "./brand";
 import { LayoutAction } from "../layout";
@@ -12,26 +12,26 @@ interface HeaderProps {
 }
 
 const Header = ({ layoutDispatch, siteTitle }: HeaderProps): JSX.Element => (
-  <header className="header">
-    <nav className="header__navigation-bar">
+  <header className={classes.header}>
+    <nav className={classes.navigationBar}>
       <Brand siteTitle={siteTitle} />
       <Link
         to="/portfolio/"
-        className="header__link"
-        activeClassName="header__link--active">
+        className={classes.link}
+        activeClassName={classes.linkActive}>
         Portfolio
       </Link>
       <Link
         to="/blog/"
-        className="header__link"
+        className={classes.link}
         partiallyActive={true}
-        activeClassName="header__link--active">
+        activeClassName={classes.linkActive}>
         Blog
       </Link>
       <button
         onClick={(): void => layoutDispatch({ type: "OPEN_MODAL" })}
         type="button"
-        className="default-button header__cta">
+        className={`${classes.defaultButton} ${classes.cta}`}>
         Work with me!
       </button>
       <MobileMenuButton
