@@ -80,11 +80,11 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
             required
             value={formState.name.value}
             onChange={updateFormState}
-            className={formState.name.valid ? classes.valid : classes.invalid}
+            className={formState.name.valid ? "" : classes.inputInvalid}
             type="text"
             name="name" />
           <span
-            className={classes.errorMessage}
+            className={classes.formErrorMessage}
             style={{ visibility: formState.name.valid ? "hidden" : "visible" }}>I&apos;d like to know how to address you</span>
         </div>
         <div>
@@ -94,28 +94,28 @@ const ContactModal = ({ opened = false, layoutDispatch }: ContactModalProps): JS
             required
             value={formState.email.value}
             onChange={updateFormState}
-            className={formState.email.valid ? "" : classes.invalid}
+            className={formState.email.valid ? "" : classes.inputInvalid}
             type="email"
             name="email" />
           <span
-            className={classes.errorMessage}
+            className={classes.formErrorMessage}
             style={{ visibility: formState.email.valid ? "hidden" : "visible" }}>I can&apos;t reply if I don&apos;t know how to reach you</span>
         </div>
-        <div className={classes.message}>
+        <div className={classes.formMessage}>
           <label htmlFor="message">Send me a message</label>
           <textarea
             id="message"
             required
             value={formState.message.value}
             onChange={updateFormState}
-            className={formState.message.valid ? "" : classes.invalid}
+            className={formState.message.valid ? "" : classes.inputInvalid}
             name="message" />
           <span
-            className={classes.errorMessage}
+            className={classes.formErrorMessage}
             style={{ visibility: formState.message.valid ? "hidden" : "visible" }}>Sending an empty message wouldn&apos;t make a lot of sense, now would it?</span>
         </div>
         <button
-          className={`${classes.defaultButton} ${classes.submit}`}
+          className={`${classes.defaultButton} ${classes.formSubmit}`}
           onClick={validateAndSendEmail}
           type="submit">
           Send Message

@@ -1,0 +1,43 @@
+@import "../../variables"
+@import "../../mixins"
+
+
+.blog
+  position: relative
+  border: $default-border
+  padding: 1rem
+  transition: transform 300ms
+  margin: 2rem
+  flex-basis: 450px
+  height: 250px
+
+  @include desktop-media-query()
+    &:hover
+      transform: scale(1.1)
+
+.blog-link
+  text-decoration: none
+
+.blog-title
+  color: $secondary-color
+  margin: 0
+  text-align: center
+
+.blog-preview
+  color: $primary-color
+  font-size: .9rem
+
+.blog-date
+  color: $grey
+  text-align: right
+  font-size: .8rem
+  position: absolute
+  right: .5rem
+  bottom: .5rem
+
+.blog-author
+  color: $primary-color
+  font-size: .8rem
+  position: absolute
+  left: .5rem
+  bottom: .5rem

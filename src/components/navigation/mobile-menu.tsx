@@ -18,17 +18,17 @@ const MobileMenu = ({ layoutDispatch, opened = false }: MobileMenuProps): JSX.El
     <nav className={classNames.join(" ")}>
       <Link
         to="/portfolio/"
-        className={classes.link}>
+        className={classes.mobileLink}>
         Portfolio
       </Link>
       <Link
         to="/blog/"
-        className={classes.link}>
+        className={classes.mobileLink}>
         Blog
       </Link>
       <button
         type="button"
-        className={`${classes.defaultButton} ${classes.cta}`}
+        className={`${classes.defaultButton} ${classes.mobileCta}`}
         onClick={(): void => {
           layoutDispatch({type: "OPEN_MODAL"});
           layoutDispatch({type: "CLOSE_MOBILE_MENU"});

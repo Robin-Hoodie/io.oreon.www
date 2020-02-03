@@ -17,21 +17,21 @@ const Header = ({ layoutDispatch, siteTitle }: HeaderProps): JSX.Element => (
       <Brand siteTitle={siteTitle} />
       <Link
         to="/portfolio/"
-        className={classes.link}
-        activeClassName={classes.linkActive}>
+        className={classes.headerLink}
+        activeClassName={classes.headerLinkActive}>
         Portfolio
       </Link>
       <Link
         to="/blog/"
-        className={classes.link}
+        className={classes.headerLink}
         partiallyActive={true}
-        activeClassName={classes.linkActive}>
+        activeClassName={classes.headerLinkActive}>
         Blog
       </Link>
       <button
         onClick={(): void => layoutDispatch({ type: "OPEN_MODAL" })}
         type="button"
-        className={`${classes.defaultButton} ${classes.cta}`}>
+        className={`${classes.defaultButton} ${classes.headerCta}`}>
         Work with me!
       </button>
       <MobileMenuButton

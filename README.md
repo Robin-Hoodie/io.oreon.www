@@ -125,3 +125,5 @@ This serves as a personal reference and replacement for an issue tracker
 - Add CI pipeline?
 - Add tests for graphql queries
 - Stronger typed SASS modules, we're making use of "any" default exports, could type sass files themselves
+- Add tagline
+- Don't convert markdown to HTML so we don't have to use `dangerouslySetInnerHTML`

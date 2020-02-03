@@ -43,7 +43,7 @@ describe("ContactModal", () => {
     fireEvent.change(nameInput, {
       target: { value: "Robin" }
     });
-    expect(nameInput).not.toHaveClass(classes.invalid);
+    expect(nameInput).not.toHaveClass(classes.inputInvalid);
   });
 
   test("should set the invalid class when filling in an empty string", () => {
@@ -55,7 +55,7 @@ describe("ContactModal", () => {
     const nameInput = getByLabelText(/name/i);
     fireChangeEventWithEmptyString(nameInput);
 
-    expect(nameInput).toHaveClass(classes.invalid);
+    expect(nameInput).toHaveClass(classes.inputInvalid);
   });
 
   test("should NOT set the invalid class when filling in a valid email address", () => {
@@ -68,7 +68,7 @@ describe("ContactModal", () => {
     fireEvent.change(emailInput, {
       target: { value: "robin@oreon.io" }
     });
-    expect(emailInput).not.toHaveClass(classes.invalid);
+    expect(emailInput).not.toHaveClass(classes.inputInvalid);
   });
 
   test("should set the invalid class when filling in an empty string as the email address", () => {
@@ -79,7 +79,7 @@ describe("ContactModal", () => {
     );
     const emailInput = getByLabelText(/email/i);
     fireChangeEventWithEmptyString(emailInput);
-    expect(emailInput).toHaveClass(classes.invalid);
+    expect(emailInput).toHaveClass(classes.inputInvalid);
   });
 
   test("should set the invalid class when filling in an email address without '@'", () => {
@@ -92,7 +92,7 @@ describe("ContactModal", () => {
     fireEvent.change(emailInput, {
       target: { value: "robin" }
     });
-    expect(emailInput).toHaveClass(classes.invalid);
+    expect(emailInput).toHaveClass(classes.inputInvalid);
   });
 
   test("should call layoutDispatch when clicking on the submit button", async () => {
