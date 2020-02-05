@@ -1,16 +1,18 @@
 import React from "react";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from "../layout";
+import SEO from "../seo";
 import { graphql } from "gatsby";
 import ReactMarkdown from "react-markdown";
 import classes from "./blog-template.module.sass";
 
-export const query = graphql`query ($title: String!) {
-  blog: markdownRemark(frontmatter: {title: {eq: $title} } ) {
+export const query = graphql`
+query ($id: String!) {
+  blog: markdownRemark(id: {eq: $id}) {
     frontmatter {
       title
       date(formatString: "D MMM YYYY")
+      author
     }
     content: rawMarkdownBody
   }
@@ -22,6 +24,7 @@ interface BlogProps {
       frontmatter: {
         title: string;
         date: string;
+        author: string;
       };
       content: string;
     };
@@ -32,7 +35,7 @@ const BlogTemplate = ({ data: { blog } }: BlogProps): JSX.Element => (
   <Layout>
     <SEO title={`Blog: ${blog.frontmatter.title}`} />
     <h1 className={classes.blogTitle}>{blog.frontmatter.title}</h1>
-    <div className={classes.blogDate}>{blog.frontmatter.date}</div>
+    <div className={classes.blogDate}>By {blog.frontmatter.author} - {blog.frontmatter.date}</div>
     <ReactMarkdown
       source={blog.content}
       className={classes.blogContent} />

@@ -2,8 +2,9 @@
 title: "Kansas City Chiefs Win Superbowl"
 date: "2020-01-31"
 author: "Jill Martin"
+image: "../images/baseball.png"
 ---
-# Led by Patrick Mahomes, Chiefs pull off epic Super Bowl comeback
+## Led by Patrick Mahomes, Chiefs pull off epic Super Bowl comeback
 
 Miami Gardens, Florida (CNN)Patrick Mahomes would not be denied a Super Bowl ring.
 
@@ -29,7 +30,7 @@ Now, with career win No. 222, Reid is a champion. He broke the record for the mo
 
 Said Chiefs chairman Clark Hunt: "Nobody deserves this trophy more than Andy Reid."
 
-## Mahomes magic
+### Mahomes magic
 
 It wasn't easy for the Chiefs. That was, in part, because Mahomes was pressured by the 49ers defensive front and was sacked four times.
 

@@ -1,29 +1,35 @@
 const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
-  const results = await graphql(`{
+  const {data} = await graphql(`{
     allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
+      blogs: nodes {
+        id
+        fields {
+          slug
         }
       }
     }
   }`);
-  results.data.allMarkdownRemark.edges.forEach(edge => {
+  data.allMarkdownRemark.blogs.forEach(blog => {
     createPage({
-      component: require.resolve("./src/templates/blog-template.tsx"),
-      path: edge.node.fields.slug,
+      component: require.resolve("./src/components/blog/blog-template.tsx"),
+      path: blog.fields.slug,
       context: {
-        title: edge.node.frontmatter.title
+        id: blog.id
       }
     });
   });
+};
+
+exports.onCreatePage = ({page, actions: {createPage, deletePage}}) => {
+  if (page.path.includes("blog-list")) {
+    deletePage(page);
+    createPage({
+      ...page,
+      path: "/blog/", // I don't think the default of "blog-list" looks nice as a URL
+    });
+  }
 };
 
 // Add the path for every markdown file based on the filesystem path
@@ -37,3 +43,7 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
     });
   }
 };
+
+exports.onCreateWebpackConfig = ({actions: {setWebpack}}) => {
+
+}

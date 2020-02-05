@@ -2,6 +2,7 @@
 title: "What Brexit will mean for travelers"
 date: "2020-01-30"
 author: "Joe Minihane"
+image: "../images/brexit.png"
 ---
 
 (CNN) — Britain's departure from the European Union is finally upon us, but after all the warnings of chaos for inbound tourists and problems for UK travelers heading to the continent, what will situations will travelers actually face after January 31?

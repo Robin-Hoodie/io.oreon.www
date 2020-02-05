@@ -14,13 +14,7 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: path.resolve(__dirname, "src/data/images"),
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: path.resolve(__dirname, "src/data/content"),
+        path: path.resolve(__dirname, "src/data"),
       },
     },
     "gatsby-transformer-sharp",

@@ -1,43 +1,52 @@
-@import "../../variables"
-@import "../../mixins"
-
+@import "src/variables"
+@import "src/mixins"
 
 .blog
-  position: relative
   border: $default-border
-  padding: 1rem
+  border-right-width: 0
+  border-left-width: 0
   transition: transform 300ms
   margin: 2rem
-  flex-basis: 450px
-  height: 250px
+  max-width: 90%
+  padding: 1rem
 
   @include desktop-media-query()
+    max-width: 70%
     &:hover
-      transform: scale(1.1)
+      transform: translateY(-5%)
+
 
 .blog-link
+  grid-template-rows: 2fr 6fr 1fr
+  grid-template-columns: 1fr 4fr 1fr
+  display: grid
   text-decoration: none
 
 .blog-title
-  color: $secondary-color
+  grid-column-start: 2
+  grid-column-end: span 2
+  color: $primary-color
   margin: 0
-  text-align: center
+  letter-spacing: 1px
+
+.blog-image
+  grid-row-start: 1
+  grid-row-end: span 3
+  justify-self: left
+  align-self: center
+  display: inline-block
 
 .blog-preview
   color: $primary-color
-  font-size: .9rem
+  align-self: center
+  text-decoration: none
 
 .blog-date
   color: $grey
-  text-align: right
   font-size: .8rem
-  position: absolute
-  right: .5rem
-  bottom: .5rem
+  justify-self: right
 
 .blog-author
-  color: $primary-color
+  grid-column-start: 2
+  color: $grey
   font-size: .8rem
-  position: absolute
-  left: .5rem
-  bottom: .5rem

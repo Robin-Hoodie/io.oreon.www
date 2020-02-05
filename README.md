@@ -91,12 +91,22 @@ While Gatsby uses Webpack under the hood, we're [configuring webpack ourselves](
 This webpack file is used for bundling our Netlify Functions code, that lives in [functions/](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/config/functions/). 
 Again, most important is that this uses the [@babel/preset-typescript](https://babeljs.io/docs/en/babel-preset-typescript) preset for the transpilation process. 
 
-## Adding blogposts
+## Blog posts
+
+### Adding blog posts
 
 Blogposts can be added by adding a markdown file to [src/data/content](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/src/data/content).
 
 The path at which the blog will be published is `/blogs` + the filename (without extension). 
-Make sure the post has a title specified in its frontmatter.
+Make sure the post has the following fields specified in its frontmatter:
+- `title` Used to display in the link to the blogpost and the title on the blogpost's page itself
+- `date` Blogposts are sorted on their date on the blogposts page and displayed in the link to the blogpost and the blogpost itself
+- `author` Displayed in the link to the blogpost and the blogpost itself
+- `image` Displayed in the link the blogpost - this has to be a relative path to the image, which should ideally be stored in `/src/data/image`
+
+Note that the image will be resized to a 100x100 size
+Also note that the image will be converted to a [Webp](https://developers.google.com/speed/webp) image if the browser supports it
+
 E.g.
 ```
 //File src/data/content/cats.md
@@ -108,11 +118,19 @@ I love cats, they can sometimes be a bit naughty though
 By creating this markdown file, the next time the code is pushed to `master` (and subsequently deployed), you'll find yourblogpost on `/blogs/cats`.
 The code related to the automatic creation of this page, and the inferred path can be found in [gatsby-node.js](https://github.com/Robin-Hoodie/io.oreon.www/blob/master/gatsby-node.js)
 
+### Updating blog posts
+
+Updating a blogpost is as easy as editing the markdown content and pushing your commit to Github.
+
+### Deleting blog posts
+
+Similar to updating a blogpost, you just need to delete the markdown file and push your commit to Github.
+
 #### TODO-List
 
-This serves as a personal reference and replacement for an issue tracker
+This serves as a personal reference and "light-weight" replacement for an issue tracker
 
-- Mobile toggle can be done as SVG
+- Mobile toggle could be done as SVG
 - Mobile items need feedback on clicking them
 - Use different visual cue for hovering over links than buttons do
 - Get logo to use as icon
@@ -126,4 +144,6 @@ This serves as a personal reference and replacement for an issue tracker
 - Add tests for graphql queries
 - Stronger typed SASS modules, we're making use of "any" default exports, could type sass files themselves
 - Add tagline
-- Don't convert markdown to HTML so we don't have to use `dangerouslySetInnerHTML`
+- Cover image should be delivered w/ Gatsby Image
+- Add note on images and use of Gatsby Image?
+

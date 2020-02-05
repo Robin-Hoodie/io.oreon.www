@@ -1,29 +1,38 @@
 import React from "react";
 import { Link } from "gatsby";
+import Img, { FixedObject } from "gatsby-image";
 
 import classes from "./blog-link.module.sass";
 
 export interface BlogLinkProps {
-  link: string;
-  title: string;
-  truncatedText: string;
-  date: string;
-  author: string;
+  blog: {
+    excerpt: string;
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+      date: string;
+      author: string;
+    };
+  };
+  blogImage: FixedObject;
 }
 
-const BlogLink = ({ link, title, date, truncatedText, author }: BlogLinkProps): JSX.Element => (
+const BlogLink = ({ blog, blogImage }: BlogLinkProps): JSX.Element => (
   <li className={classes.blog}>
-    <Link
-      className={classes.blogLink}
-      to={link}>
-      <h2 className={classes.blogTitle}>{title}</h2>
+    <Link to={blog.fields.slug} className={classes.blogLink}>
+      <h2 className={classes.blogTitle}>{blog.frontmatter.title}</h2>
+      <Img
+        fixed={blogImage}
+        className={classes.blogImage} />
       <p className={classes.blogPreview}>
-        {truncatedText}
+        {blog.excerpt}
       </p>
       <span className={classes.blogAuthor}>
-        Written by {author}
+        Written by {blog.frontmatter.author}
       </span>
-      <span className={classes.blogDate}>{date}</span>
+      <span className={classes.blogDate}>{blog.frontmatter.date}</span>
     </Link>
   </li>
 );
