@@ -13,7 +13,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   }`);
   data.allMarkdownRemark.blogs.forEach(blog => {
     createPage({
-      component: require.resolve("./src/components/blog/blog-template.tsx"),
+      component: require.resolve("./src/templates/blog-template.tsx"),
       path: blog.fields.slug,
       context: {
         id: blog.id
@@ -43,7 +43,3 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
     });
   }
 };
-
-exports.onCreateWebpackConfig = ({actions: {setWebpack}}) => {
-
-}
