@@ -68,6 +68,10 @@ You can view the PR here: https://github.com/escaladesports/gatsby-plugin-webpac
 
 The report of the live site can be found here: https://www.oreon.io/reports/bundle-analyzer.html
 
+The 2 main reasons these reports are interesting are:
+- Analysis of the weight of our app and which code is being loaded
+- Understanding more how webpack splits our code into different bundles
+
 # Overview of build systems
 
 - Typescript:
