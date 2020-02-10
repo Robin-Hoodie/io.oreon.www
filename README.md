@@ -150,4 +150,4 @@ This serves as a personal reference and "light-weight" replacement for an issue 
 - Add tagline
 - Cover image should be delivered w/ Gatsby Image
 - Add note on images and use of Gatsby Image?
-
+- Document usage of @src imports

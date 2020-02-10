@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import Backdrop from "./backdrop";
-import classes from "./backdrop.module.sass";
+import Backdrop from "@src/components/backdrop";
+import classes from "@src/components/backdrop.module.sass";
 
 describe("Backdrop", () => {
   test("setting the 'opened' property to 'true' should add the 'opened' class to <Backdrop/>", () => {

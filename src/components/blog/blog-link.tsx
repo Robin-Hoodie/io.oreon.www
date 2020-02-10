@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import Img, { FixedObject } from "gatsby-image";
 
-import classes from "./blog-link.module.sass";
+import classes from "@src/components/blog/blog-link.module.sass";
 
 export interface BlogLinkProps {
   blog: {

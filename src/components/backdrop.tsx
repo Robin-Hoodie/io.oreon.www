@@ -1,7 +1,7 @@
 import React, { Dispatch } from "react";
 
-import classes from "./backdrop.module.sass";
-import { LayoutAction } from "./layout";
+import classes from "@src/components/backdrop.module.sass";
+import { LayoutAction } from "@src/components/layout";
 
 interface BackdropProps {
   opened: boolean;

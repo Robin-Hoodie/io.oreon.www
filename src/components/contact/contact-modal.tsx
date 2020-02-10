@@ -1,8 +1,8 @@
 import React, { ChangeEvent, Dispatch, MouseEvent, useState } from "react";
 
 import classes from "./contact-modal.module.sass";
-import { sendEmailEndpoint } from "../../config";
-import { LayoutAction } from "../layout";
+import { sendEmailEndpoint } from "@src/config";
+import { LayoutAction } from "@src/components/layout";
 
 interface ContactModalProps {
   opened: boolean;

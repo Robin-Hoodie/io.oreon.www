@@ -8,10 +8,10 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React, { useReducer } from "react";
 
-import Header from "./navigation/header";
-import MobileMenu from "./navigation/mobile-menu";
-import Backdrop from "./backdrop";
-import ContactModal from "./contact/contact-modal";
+import Header from "@src/components/navigation/header";
+import MobileMenu from "@src/components/navigation/mobile-menu";
+import Backdrop from "@src/components/backdrop";
+import ContactModal from "@src/components/contact/contact-modal";
 
 export type LayoutAction =
   { type: "CLOSE_MODAL" }

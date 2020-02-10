@@ -1,4 +1,12 @@
 const { createFilePath } = require("gatsby-source-filesystem");
+const path = require("path");
+
+const GATSBY_STAGES = {
+  develop: "develop",
+  developHtml: "develop-html",
+  buildJavascript: "build-javascript",
+  buildHtml: "build-html"
+};
 
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const {data} = await graphql(`{
@@ -40,6 +48,23 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
       node,
       name: "slug",
       value: `/blog${path}`
+    });
+  }
+};
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  actions: {setWebpackConfig},
+}) => {
+  if (stage === GATSBY_STAGES.develop ||
+    stage === GATSBY_STAGES.buildJavascript ||
+    stage === GATSBY_STAGES.buildHtml) {
+    setWebpackConfig({
+      resolve: {
+        alias: {
+          "@src": path.resolve(__dirname, "src")
+        }
+      }
     });
   }
 };

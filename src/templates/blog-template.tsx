@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { graphql } from "gatsby";
 import ReactMarkdown from "react-markdown";
-import classes from "./blog-template.module.sass";
+import classes from "@src/templates/blog-template.module.sass";
 
 export const query = graphql`
 query ($id: String!) {

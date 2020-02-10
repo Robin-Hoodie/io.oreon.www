@@ -12,7 +12,10 @@ module.exports = () => {
       path: path.resolve(__dirname, `${relativePathToFunctionsDir}/dist`)
     },
     resolve: {
-      extensions: [".ts", ".js"]
+      extensions: [".ts", ".js"],
+      alias: {
+        "@src": path.resolve(__dirname, "../../functions/src")
+      }
     },
     target: "node",
     module: {

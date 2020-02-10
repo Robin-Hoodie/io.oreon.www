@@ -1,10 +1,10 @@
 import React from "react";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from "@src/components/layout";
+import SEO from "@src/components/seo";
 import { graphql } from "gatsby";
-import classes from "./blog-list.module.sass";
-import BlogLink from "../components/blog/blog-link";
+import classes from "@src/pages/blog-list.module.sass";
+import BlogLink from "@src/components/blog/blog-link";
 import { FixedObject } from "gatsby-image";
 
 export const query = graphql`{

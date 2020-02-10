@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, render, wait } from "@testing-library/react";
-import ContactModal from "./contact-modal";
+import ContactModal from "@src/components/contact/contact-modal";
 import classes from "contact-modal.module.sass";
 
 const fireChangeEventWithEmptyString = (input: Element): void => {

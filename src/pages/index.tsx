@@ -1,8 +1,8 @@
 import React from "react";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Banner from "../components/banner";
+import Layout from "@src/components/layout";
+import SEO from "@src/components/seo";
+import Banner from "@src/components/banner";
 
 const IndexPage = (): JSX.Element => (
   <>
