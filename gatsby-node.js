@@ -12,12 +12,15 @@ const GATSBY_STAGES = {
 
 const NODE_CONFIG_PREFIX = colors.yellow("gatsby-node.js");
 
-// const PUBLIC_FOLDER = path.resolve(__dirname, 'public');
+const PUBLIC_FOLDER = path.resolve(__dirname, 'public');
 
-// exports.onPreBuild = () => {
-//   console.log("Deleting public folder");
-//   rimraf.sync(PUBLIC_FOLDER);
-// };
+exports.onPreInit = () => {
+  // Gatsby doesn't clean up the public folder by default
+  if (process.env.NODE_ENV === "production") {
+    console.log(NODE_CONFIG_PREFIX, `Deleting directory ${PUBLIC_FOLDER}`);
+    rimraf.sync(PUBLIC_FOLDER);
+  }
+};
 
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const {data} = await graphql(`{
@@ -59,7 +62,7 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   if (node.internal.type === "MarkdownRemark") {
     const path = createFilePath({ node, getNode, basePath: "src/data/content" });
     const slug = `/blog${path}`;
-    console.log(NODE_CONFIG_PREFIX, `Adding 'slug' field with value ${slug} to node for blog post with title '${node.frontmatter.title}'`);
+    console.log(NODE_CONFIG_PREFIX, `Adding "slug| field with value ${slug} to node for blog post with title '${node.frontmatter.title}'`);
     createNodeField({
       node,
       name: "slug",

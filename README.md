@@ -76,7 +76,7 @@ The 2 main reasons these reports are interesting are:
 - Analysis of the weight of our app and which code is being loaded
 - Understanding more how webpack splits our code into different bundles
 
-# Overview of build systems
+## Overview of build systems
 
 - Typescript:
 
@@ -167,5 +167,4 @@ This serves as a personal reference and "light-weight" replacement for an issue 
 - Add tagline
 - Cover image should be delivered w/ Gatsby Image
 - Add note on images and use of Gatsby Image?
-- Clean build folder before rebuilding w/ `npm run build`
 - Storybook and storyshots
