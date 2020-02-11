@@ -9,6 +9,10 @@ Gatsby is used as a SSG and works well in tandem with Netlify
 Type checking happens at commit-time, by running a pre-commit hook which runs `tsc` to check the types.
 Ideally, we'd include this check in a CI pipeline as well, as pre-commits can be avoided through git CLI options
 
+We're type checking:
+- Application code
+- Netlify functions code
+- Webpack config
 
 ## Babel
 

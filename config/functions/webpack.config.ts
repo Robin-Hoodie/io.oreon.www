@@ -1,7 +1,8 @@
-const path = require("path");
+import path from "path";
+import webpack from "webpack";
 const relativePathToFunctionsDir = "../../functions";
 
-module.exports = () => {
+module.exports = (): webpack.Configuration => {
   return {
     entry: {
       "contact-form-email": path.resolve(__dirname, `${relativePathToFunctionsDir}/src/contact-form-email/contact-form-email.ts`)

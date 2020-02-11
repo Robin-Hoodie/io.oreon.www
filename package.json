@@ -40,6 +40,7 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
     "@types/react-helmet": "^5.0.14",
+    "@types/webpack": "^4.41.6",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
     "babel-jest": "^25.1.0",
@@ -56,6 +57,7 @@
     "jest": "^25.1.0",
     "jest-fetch-mock": "^3.0.1",
     "netlify-lambda": "^1.6.3",
+    "ts-node": "^8.6.2",
     "typescript": "^3.6.4",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
@@ -63,7 +65,7 @@
   "scripts": {
     "build": "gatsby build",
     "build:netlify": "npm run build && npm run functions:build",
-    "functions:webpack": "webpack --config config/functions/webpack.config.js",
+    "functions:webpack": "webpack --config config/functions/webpack.config.ts",
     "functions:build": "npm run functions:webpack -- --mode production",
     "functions:watch": "npm run functions:webpack -- --mode development --watch",
     "lint": "eslint src/ functions/ --ext .ts,.tsx,.js --max-warnings 0",
