@@ -1,7 +1,7 @@
 import React from "react";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from "@src/components/layout";
+import SEO from "@src/components/seo";
 import { graphql } from "gatsby";
 import ReactMarkdown from "react-markdown";
 import classes from "@src/templates/blog-template.module.sass";

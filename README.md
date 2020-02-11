@@ -130,6 +130,13 @@ Updating a blogpost is as easy as editing the markdown content and pushing your 
 
 Similar to updating a blogpost, you just need to delete the markdown file and push your commit to Github.
 
+## Custom webpack features
+
+This is a list of custom features (outside of the standard Gatsby webpack config) we've added to webpack:
+- Using "@src" in import statement will refer to [the src directory](https://github.com/Robin-Hoodie/io.oreon.www/tree/master/src)  
+For functions code it will refer to the [functions src directory](https://github.com/Robin-Hoodie/io.oreon.www/tree/master/functions/src)  
+This is so that we can avoid long relative import paths
+
 #### TODO-List
 
 This serves as a personal reference and "light-weight" replacement for an issue tracker
@@ -150,4 +157,4 @@ This serves as a personal reference and "light-weight" replacement for an issue 
 - Add tagline
 - Cover image should be delivered w/ Gatsby Image
 - Add note on images and use of Gatsby Image?
-- Document usage of @src imports
+- Write webpack config in TS
