@@ -141,6 +141,12 @@ This is a list of custom features (outside of the standard Gatsby webpack config
 For functions code it will refer to the [functions src directory](https://github.com/Robin-Hoodie/io.oreon.www/tree/master/functions/src)  
 This is so that we can avoid long relative import paths
 
+### Custom logging
+
+We've added some `console.log` statements to the parts where we hook into the Gatsby Node API 
+in order to increase transparency into the development/build process. These console.log statements
+are prefixed with "gatsby-node.js"
+ 
 #### TODO-List
 
 This serves as a personal reference and "light-weight" replacement for an issue tracker
@@ -161,4 +167,5 @@ This serves as a personal reference and "light-weight" replacement for an issue 
 - Add tagline
 - Cover image should be delivered w/ Gatsby Image
 - Add note on images and use of Gatsby Image?
-- Write webpack config in TS
+- Clean build folder before rebuilding w/ `npm run build`
+- Storybook and storyshots
