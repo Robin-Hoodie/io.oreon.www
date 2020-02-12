@@ -140,6 +140,7 @@ This is a list of custom features (outside of the standard Gatsby webpack config
 - Using "@src" in import statement will refer to [the src directory](https://github.com/Robin-Hoodie/io.oreon.www/tree/master/src)  
 For functions code it will refer to the [functions src directory](https://github.com/Robin-Hoodie/io.oreon.www/tree/master/functions/src)  
 This is so that we can avoid long relative import paths
+- Set `resolve.symlinks` to `false` as we don't use any symlinked modules. We can safely turn this off to improve build performance
 
 ### Custom logging
 
@@ -168,3 +169,5 @@ This serves as a personal reference and "light-weight" replacement for an issue 
 - Cover image should be delivered w/ Gatsby Image
 - Add note on images and use of Gatsby Image?
 - Storybook and storyshots
+- Improve mobile view of BlogList
+- Add alt/title tag to images in BlogLink to improve usability

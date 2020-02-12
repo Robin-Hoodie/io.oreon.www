@@ -1,5 +1,6 @@
 import path from "path";
 import webpack from "webpack";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 const relativePathToFunctionsDir = "../../functions";
 
 module.exports = (): webpack.Configuration => {
@@ -9,21 +10,25 @@ module.exports = (): webpack.Configuration => {
     },
     context: path.resolve(__dirname, relativePathToFunctionsDir),
     output: {
-      filename: '[name].js',
+      filename: '[name].[contenthash].js', // Bust cache on updates
       path: path.resolve(__dirname, `${relativePathToFunctionsDir}/dist`)
     },
     resolve: {
       extensions: [".ts", ".js"],
       alias: {
         "@src": path.resolve(__dirname, "../../functions/src")
-      }
+      },
+      symlinks: false //We don't use symlinked modules, this improves performance
     },
     target: "node",
+    plugins: [
+      new CleanWebpackPlugin()
+    ],
     module: {
       rules: [
         {
           test: /\.ts$/,
-          exclude: /node_modules/,
+          include: path.resolve(__dirname, relativePathToFunctionsDir),
           use: [
             {
               loader: "babel-loader",
