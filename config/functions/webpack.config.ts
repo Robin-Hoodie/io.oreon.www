@@ -10,7 +10,7 @@ module.exports = (): webpack.Configuration => {
     },
     context: path.resolve(__dirname, relativePathToFunctionsDir),
     output: {
-      filename: '[name].[contenthash].js', // Bust cache on updates
+      filename: '[name].js',
       path: path.resolve(__dirname, `${relativePathToFunctionsDir}/dist`)
     },
     resolve: {

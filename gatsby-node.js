@@ -74,7 +74,6 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 exports.onCreateWebpackConfig = ({
   stage,
   actions: {setWebpackConfig},
-
 }) => {
   if (stage === GATSBY_STAGES.develop ||
     stage === GATSBY_STAGES.buildJavascript ||
@@ -83,7 +82,6 @@ exports.onCreateWebpackConfig = ({
     const pathToAliasTo = path.resolve(__dirname, "src");
     console.log(NODE_CONFIG_PREFIX, `Aliasing ${alias} to ${pathToAliasTo}`);
     console.log(NODE_CONFIG_PREFIX, "Turning off symlink module resolution for webpack");
-    //TODO-RobinH: Check what default webpack config is
     setWebpackConfig({
       resolve: {
         symlinks: false, //We don't use symlinked modules, this improves performance
